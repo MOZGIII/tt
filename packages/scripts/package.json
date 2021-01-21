@@ -2,6 +2,7 @@
   "name": "tt-scripts",
   "private": true,
   "scripts": {
+    "scripts:env": "env",
     "prettier:check": "cd \"$INIT_CWD\" && prettier --list-different **/*",
     "prettier:fix": "cd \"$INIT_CWD\" && prettier --write **/*"
   },
