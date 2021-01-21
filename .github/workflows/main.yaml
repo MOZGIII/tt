@@ -1,0 +1,19 @@
+name: Main
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  yarn:
+    runs-on: ubuntu-20.04
+    name: ${{ matrix.command }}
+    strategy:
+      fail-fast: false
+      matrix:
+        command:
+          - yarn install --check-cache
+          - yarn constraints
+    steps:
+      - uses: actions/checkout@v2
+      - run: ${{ matrix.command }}
