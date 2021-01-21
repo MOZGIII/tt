@@ -1,0 +1,14 @@
+{
+  "name": "tt-scripts",
+  "private": true,
+  "scripts": {
+    "prettier:check": "prettier --list-different **/*",
+    "prettier:fix": "prettier --write **/*"
+  },
+  "dependencies": {
+    "prettier": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/prettier": "^2"
+  }
+}

@@ -21,12 +21,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "tt",
         "reference": "workspace:."
+      },
+      {
+        "name": "tt-scripts",
+        "reference": "workspace:packages/scripts"
       }
     ],
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["tt", ["workspace:."]]
+      ["tt", ["workspace:."]],
+      ["tt-scripts", ["workspace:packages/scripts"]]
     ],
     "fallbackPool": [
     ],
@@ -41,11 +46,40 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT",
         }]
       ]],
+      ["@types/prettier", [
+        ["npm:2.1.6", {
+          "packageLocation": "./.yarn/cache/@types-prettier-npm-2.1.6-fd945b1b6e-c78a6406b0.zip/node_modules/@types/prettier/",
+          "packageDependencies": [
+            ["@types/prettier", "npm:2.1.6"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["prettier", [
+        ["npm:2.2.1", {
+          "packageLocation": "./.yarn/cache/prettier-npm-2.2.1-e0670992f8-92c6c9f4b8.zip/node_modules/prettier/",
+          "packageDependencies": [
+            ["prettier", "npm:2.2.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["tt", [
         ["workspace:.", {
           "packageLocation": "./",
           "packageDependencies": [
             ["tt", "workspace:."]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["tt-scripts", [
+        ["workspace:packages/scripts", {
+          "packageLocation": "./packages/scripts/",
+          "packageDependencies": [
+            ["tt-scripts", "workspace:packages/scripts"],
+            ["@types/prettier", "npm:2.1.6"],
+            ["prettier", "npm:2.2.1"]
           ],
           "linkType": "SOFT",
         }]
