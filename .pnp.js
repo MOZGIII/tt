@@ -23,6 +23,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:."
       },
       {
+        "name": "tt-app",
+        "reference": "workspace:packages/app"
+      },
+      {
         "name": "tt-scripts",
         "reference": "workspace:packages/scripts"
       }
@@ -31,6 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$)",
     "fallbackExclusionList": [
       ["tt", ["workspace:."]],
+      ["tt-app", ["workspace:packages/app"]],
       ["tt-scripts", ["workspace:packages/scripts"]]
     ],
     "fallbackPool": [
@@ -69,6 +74,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["tt", "workspace:."]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["tt-app", [
+        ["workspace:packages/app", {
+          "packageLocation": "./packages/app/",
+          "packageDependencies": [
+            ["tt-app", "workspace:packages/app"]
           ],
           "linkType": "SOFT",
         }]
