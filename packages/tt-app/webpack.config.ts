@@ -2,6 +2,7 @@ import * as path from "path";
 import * as webpack from "webpack";
 import * as webpackDevServer from "webpack-dev-server";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import InlineChunkHtmlPlugin from "inline-chunk-html-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
@@ -30,6 +31,8 @@ const config = (env: any, argv: unknown): webpack.Configuration => {
         filename: "./index.html",
         template: "./public/index.html",
       }),
+      isProduction &&
+        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/^runtime~/]),
     ]),
     devtool: isProduction ? "source-map" : "inline-source-map",
     devServer: {
@@ -39,6 +42,14 @@ const config = (env: any, argv: unknown): webpack.Configuration => {
     output: {
       filename: isProduction ? "[name].[contenthash].js" : "bundle.js",
       path: outputPath,
+    },
+    optimization: {
+      ...(isProduction && {
+        runtimeChunk: "multiple",
+        splitChunks: {
+          chunks: "all",
+        },
+      }),
     },
     module: {
       rules: [

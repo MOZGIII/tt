@@ -6398,6 +6398,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["inline-chunk-html-plugin", [
+        ["npm:1.1.1", {
+          "packageLocation": "./.yarn/cache/inline-chunk-html-plugin-npm-1.1.1-6efa629b2d-e61ab05448.zip/node_modules/inline-chunk-html-plugin/",
+          "packageDependencies": [
+            ["inline-chunk-html-plugin", "npm:1.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["internal-ip", [
         ["npm:4.3.0", {
           "packageLocation": "./.yarn/cache/internal-ip-npm-4.3.0-721bfbef82-2cf2248053.zip/node_modules/internal-ip/",
@@ -9881,6 +9890,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "virtual:135c074a108254f3c8b8f0a00676508f0d05216250f6a54f4b6e3e2406d2c903cd807bf66622e33a4f574201516a4b6aae40334c6060de7dc65755e8eca4c7c8#npm:6.1.0"],
             ["html-webpack-plugin", "virtual:135c074a108254f3c8b8f0a00676508f0d05216250f6a54f4b6e3e2406d2c903cd807bf66622e33a4f574201516a4b6aae40334c6060de7dc65755e8eca4c7c8#npm:5.0.0-beta.6"],
             ["http-server", "npm:0.12.3"],
+            ["inline-chunk-html-plugin", "npm:1.1.1"],
             ["react", "npm:17.0.1"],
             ["react-dom", "virtual:135c074a108254f3c8b8f0a00676508f0d05216250f6a54f4b6e3e2406d2c903cd807bf66622e33a4f574201516a4b6aae40334c6060de7dc65755e8eca4c7c8#npm:17.0.1"],
             ["react-reconciler", "virtual:135c074a108254f3c8b8f0a00676508f0d05216250f6a54f4b6e3e2406d2c903cd807bf66622e33a4f574201516a4b6aae40334c6060de7dc65755e8eca4c7c8#npm:0.26.1"],

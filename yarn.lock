@@ -1580,7 +1580,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/http-server@npm:^0":
+"@types/http-server@npm:^0.10.1":
   version: 0.10.1
   resolution: "@types/http-server@npm:0.10.1"
   dependencies:
@@ -4863,6 +4863,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"inline-chunk-html-plugin@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "inline-chunk-html-plugin@npm:1.1.1"
+  checksum: e61ab05448707988160bf32dca269f31d988cf56d0944370091fbd2472d5012caef0bed6b16b4ea1e5076a9478603679fd357667ecfb64f7d2acb922f43e5d33
+  languageName: node
+  linkType: hard
+
 "internal-ip@npm:^4.3.0":
   version: 4.3.0
   resolution: "internal-ip@npm:4.3.0"
@@ -7962,7 +7969,7 @@ resolve@^1.9.0:
     "@pmmmwh/react-refresh-webpack-plugin": ^0.4.3
     "@types/babel__core": ^7.1.12
     "@types/babel__preset-env": ^7.9.1
-    "@types/http-server": ^0
+    "@types/http-server": ^0.10.1
     "@types/node": ^12.19.15
     "@types/react": ^17
     "@types/react-dom": ^17
@@ -7974,6 +7981,7 @@ resolve@^1.9.0:
     fork-ts-checker-webpack-plugin: ^6.1.0
     html-webpack-plugin: next
     http-server: ^0.12.3
+    inline-chunk-html-plugin: ^1.1.1
     react: ^17.0.1
     react-dom: ^17.0.1
     react-reconciler: ^0.26.1
