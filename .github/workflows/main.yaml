@@ -14,6 +14,7 @@ jobs:
         command:
           - yarn install --check-cache
           - yarn constraints
+          - yarn workspace tt-app build
     steps:
       - uses: actions/checkout@v2
       - run: ${{ matrix.command }}
