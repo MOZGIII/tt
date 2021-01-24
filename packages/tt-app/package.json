@@ -4,7 +4,7 @@
   "scripts": {
     "build": "webpack build --env production",
     "start": "webpack serve",
-    "serve-static": "http-server dist"
+    "serve-static": "http-server build"
   },
   "dependencies": {
     "react": "^17.0.1",

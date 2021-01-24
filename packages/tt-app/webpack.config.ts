@@ -13,7 +13,7 @@ declare module "webpack" {
   }
 }
 
-const outputPath = path.resolve(__dirname, "dist");
+const outputPath = path.resolve(__dirname, "build");
 
 const filter = <T>(a: Array<T | false>): Array<T> =>
   a.filter((v): v is T => v !== false);
@@ -40,8 +40,11 @@ const config = (env: any, argv: unknown): webpack.Configuration => {
       hot: true,
     },
     output: {
-      filename: isProduction ? "[name].[contenthash].js" : "bundle.js",
+      filename: isProduction
+        ? "static/js/[name].[contenthash].js"
+        : "static/js/bundle.js",
       path: outputPath,
+      pathinfo: !isProduction,
     },
     optimization: {
       ...(isProduction && {
