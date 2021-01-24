@@ -6,17 +6,9 @@
     "packages/*"
   ],
   "scripts": {
-    "update-sdk": "pnpify --sdk",
-    "scripts:env": "env",
-    "prettier:check": "cd \"$INIT_CWD\" && prettier --list-different **/*",
-    "prettier:fix": "cd \"$INIT_CWD\" && prettier --write **/*"
-  },
-  "dependencies": {
-    "@yarnpkg/pnpify": "^2.4.0",
-    "prettier": "^2.2.1",
-    "typescript": "^4.1.3"
+    "update-sdk": "pnpify --sdk"
   },
   "devDependencies": {
-    "@types/prettier": "^2.1.6"
+    "@yarnpkg/pnpify": "^2.4.0"
   }
 }
