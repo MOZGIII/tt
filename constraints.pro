@@ -19,7 +19,6 @@ gen_enforced_dependency(WorkspaceCwd, DependencyIdent, DependencyRange2, Depende
 % at `tt-scripts` workspace.
 gen_enforced_dependency(WorkspaceCwd, 'prettier', null, DependencyType) :-
   % Ignores `tt-scripts` package, as it's the only one allowed to have prettier.
-    workspace_field(WorkspaceCwd, 'name', WorkspaceName),
-    WorkspaceName \= 'tt-scripts',
+    \+ workspace_ident(WorkspaceCwd, 'tt-scripts'),
   % Ignore peer dependencies.
     DependencyType \= 'peerDependencies'.
