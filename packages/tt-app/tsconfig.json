@@ -8,6 +8,6 @@
     "sourceMap": true,
     "noEmit": true
   },
-  "include": ["src", "webpack.config.ts"],
+  "include": ["src", "*.ts"],
   "exclude": ["node_modules", "../../node_modules"]
 }
