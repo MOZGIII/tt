@@ -1,11 +1,11 @@
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import InlineChunkHtmlPlugin from "inline-chunk-html-plugin";
 import * as path from "path";
 import * as webpack from "webpack";
 import * as webpackDevServer from "webpack-dev-server";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import InlineChunkHtmlPlugin from "inline-chunk-html-plugin";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 declare module "webpack" {
   // eslint-disable-next-line functional/prefer-type-literal
