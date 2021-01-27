@@ -70,12 +70,13 @@ const config = (env: any, argv: unknown): webpack.Configuration => {
             {
               loader: "babel-loader",
               options: {
+                presets: [
+                  "@babel/preset-env",
+                  ["@babel/preset-react", { runtime: "automatic" }],
+                  "@babel/preset-typescript",
+                ],
                 plugins: filter([!isProduction && "react-refresh/babel"]),
               },
-            },
-            {
-              loader: "ts-loader",
-              options: { transpileOnly: true },
             },
           ],
         },
