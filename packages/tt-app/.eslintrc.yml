@@ -2,7 +2,7 @@ parser: "@typescript-eslint/parser"
 parserOptions:
   ecmaFeatures:
     jsx: true
-  project: ['./packages/**/tsconfig.json', './tsconfig.json']
+  project: ["./packages/**/tsconfig.json", "./tsconfig.json"]
 plugins:
   - "@typescript-eslint"
   - react
@@ -38,7 +38,7 @@ settings:
   propWrapperFunctions: []
   linkComponents:
     # Components used as alternatives to <a> for linking, eg. <Link to={ url } />
-    - {"name": "Link", "linkAttribute": "to"}
+    - { "name": "Link", "linkAttribute": "to" }
 env:
   browser: true
 rules:
