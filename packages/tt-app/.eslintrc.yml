@@ -13,6 +13,7 @@ plugins:
   - compat
   - functional
   - promise
+  - sonarjs
 extends:
   - "eslint:recommended"
   - "plugin:@typescript-eslint/recommended"
@@ -27,6 +28,7 @@ extends:
   - "plugin:functional/recommended"
   - "plugin:functional/stylitic"
   - "plugin:promise/recommended"
+  - "plugin:sonarjs/recommended"
   - "plugin:prettier/recommended"
   - "prettier/@typescript-eslint"
   - "prettier/react"
