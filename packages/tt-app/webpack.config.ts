@@ -8,19 +8,22 @@ import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 declare module "webpack" {
+  // eslint-disable-next-line functional/prefer-type-literal
   interface Configuration {
+    // eslint-disable-next-line functional/prefer-readonly-type
     devServer?: webpackDevServer.Configuration;
   }
 }
 
 const outputPath = path.resolve(__dirname, "build");
 
+// eslint-disable-next-line functional/prefer-readonly-type
 const filter = <T>(a: Array<T | false>): Array<T> =>
   a.filter((v): v is T => v !== false);
 
-interface Env {
-  production?: true;
-}
+type Env = {
+  readonly production?: true;
+};
 
 const config = (env: Env): webpack.Configuration => {
   const isProduction = env.production === true;
