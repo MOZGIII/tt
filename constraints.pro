@@ -18,7 +18,7 @@ gen_enforced_dependency(WorkspaceCwd, DependencyIdent, DependencyRange2, Depende
 % This rule enforces that `prettier` package can only be installed
 % at `tt-scripts` workspace.
 gen_enforced_dependency(WorkspaceCwd, 'prettier', null, DependencyType) :-
-  % Ignores `tt-scripts` package, as it's the only one allowed to have prettier.
+  % Ignores `tt-scripts` package, as it's the only one allowed to have `prettier`.
     \+ workspace_ident(WorkspaceCwd, 'tt-scripts'),
   % Ignore peer dependencies.
     DependencyType \= 'peerDependencies'.
