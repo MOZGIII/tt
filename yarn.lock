@@ -4191,6 +4191,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-promise@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "eslint-plugin-promise@npm:4.2.1"
+  checksum: 8c233a0b5f5646e08709e999aa75973481ee46c45255ec4b4d1577915f68d79ae52f6f84e361af5b761971294bdb38ec86021515fa4cff178f57c989226dd671
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-react-hooks@npm:^4.2.0":
   version: 4.2.0
   resolution: "eslint-plugin-react-hooks@npm:4.2.0"
@@ -9104,6 +9111,7 @@ fsevents@~2.3.1:
     eslint-plugin-functional: ^3.2.1
     eslint-plugin-import: ^2.22.1
     eslint-plugin-prettier: ^3.3.1
+    eslint-plugin-promise: ^4.2.1
     eslint-plugin-react: ^7.22.0
     eslint-plugin-react-hooks: ^4.2.0
     fork-ts-checker-webpack-plugin: ^6.1.0

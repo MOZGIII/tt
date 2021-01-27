@@ -11,6 +11,7 @@ plugins:
   - import
   - compat
   - functional
+  - promise
 extends:
   - "eslint:recommended"
   - "plugin:@typescript-eslint/recommended"
@@ -24,6 +25,7 @@ extends:
   - "plugin:functional/external-recommended"
   - "plugin:functional/recommended"
   - "plugin:functional/stylitic"
+  - "plugin:promise/recommended"
   - "plugin:prettier/recommended"
   - "prettier/@typescript-eslint"
   - "prettier/react"
