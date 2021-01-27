@@ -18,7 +18,11 @@ const outputPath = path.resolve(__dirname, "build");
 const filter = <T>(a: Array<T | false>): Array<T> =>
   a.filter((v): v is T => v !== false);
 
-const config = (env: any, argv: unknown): webpack.Configuration => {
+interface Env {
+  production?: true;
+}
+
+const config = (env: Env): webpack.Configuration => {
   const isProduction = env.production === true;
   return {
     mode: isProduction ? "production" : "development",
