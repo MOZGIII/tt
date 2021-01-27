@@ -6,5 +6,6 @@
 
 node_modules
 .gitignore
+.browserslistrc
 
 /packages/tt-app/build
