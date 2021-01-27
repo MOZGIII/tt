@@ -1,2 +1,10 @@
-constraints.pro
-yarn.lock
+/.editorconfig
+/.prettierignore
+/.yarn
+/constraints.pro
+/yarn.lock
+
+node_modules
+.gitignore
+
+/packages/tt-app/build

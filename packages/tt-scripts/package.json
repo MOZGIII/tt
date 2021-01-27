@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "scripts:env": "env",
-    "prettier:check": "cd \"$INIT_CWD\" && prettier --list-different **/*",
-    "prettier:fix": "cd \"$INIT_CWD\" && prettier --write **/*"
+    "prettier:check": "cd ../.. && prettier --ignore-path .prettierignore --list-different \"$INIT_CWD/**/*\"",
+    "prettier:fix": "cd ../.. && prettier --ignore-path .prettierignore --write \"$INIT_CWD/**/*\""
   },
   "devDependencies": {
     "prettier": "^2.2.1"
