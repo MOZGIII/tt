@@ -26,6 +26,7 @@ jobs:
       matrix:
         command:
           - yarn workspace tt-app build
+          - yarn workspace tt-app eslint-check
           - yarn prettier:check
     steps:
       - uses: actions/checkout@v2
