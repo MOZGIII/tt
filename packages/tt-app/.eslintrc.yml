@@ -1,0 +1,27 @@
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  project: ['./packages/**/tsconfig.json', './tsconfig.json']
+plugins:
+  - "@typescript-eslint"
+  - react
+  - react-hooks
+  - prettier
+extends:
+  - "eslint:recommended"
+  - "plugin:@typescript-eslint/recommended"
+  - "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  - "plugin:react/recommended"
+  - "plugin:react-hooks/recommended"
+  - "plugin:prettier/recommended"
+  - "prettier/@typescript-eslint"
+  - "prettier/react"
+settings:
+  react:
+    version: detect
+  propWrapperFunctions: []
+  linkComponents:
+    # Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+    - {"name": "Link", "linkAttribute": "to"}
+rules: {}
