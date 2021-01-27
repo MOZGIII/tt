@@ -5,7 +5,8 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "moduleResolution": "node",
     "jsx": "react-jsx",
-    "sourceMap": true
+    "sourceMap": true,
+    "noEmit": true
   },
   "references": [{ "path": "./src" }]
 }
