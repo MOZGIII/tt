@@ -26,6 +26,7 @@ jobs:
       matrix:
         command:
           - yarn workspace tt-app build
+          - yarn prettier:check
     steps:
       - uses: actions/checkout@v2
       - run: yarn install --immutable --immutable-cache
