@@ -73,6 +73,7 @@ const config = (env: Env): webpack.Configuration => {
         },
         {
           test: /\.[jt]sx?$/,
+          exclude: /node_modules/,
           use: [
             {
               loader: "babel-loader",
@@ -88,6 +89,9 @@ const config = (env: Env): webpack.Configuration => {
           ],
         },
       ],
+    },
+    resolve: {
+      extensions: [".ts", ".tsx", ".js"],
     },
   };
 };
