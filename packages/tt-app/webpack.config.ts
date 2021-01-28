@@ -39,7 +39,7 @@ const config = (env: Env): webpack.Configuration => {
         template: "./public/index.html",
       }),
       isProduction &&
-        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/^runtime~/]),
+        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~/]),
     ]),
     devtool: isProduction ? "source-map" : "inline-source-map",
     devServer: {
