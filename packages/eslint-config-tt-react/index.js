@@ -28,7 +28,7 @@ const config = {
     "plugin:import/typescript",
     "plugin:compat/recommended",
     "plugin:functional/external-recommended",
-    "plugin:functional/recommended",
+    "plugin:functional/lite",
     "plugin:functional/stylitic",
     "plugin:promise/recommended",
     "plugin:sonarjs/recommended",
