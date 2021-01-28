@@ -30,6 +30,7 @@ const config = (env: Env): webpack.Configuration => {
   return {
     mode: isProduction ? "production" : "development",
     entry: path.resolve(__dirname, "./src/index.tsx"),
+    target: "web",
     plugins: filter([
       !isProduction && new ReactRefreshWebpackPlugin(),
       new CleanWebpackPlugin(),
