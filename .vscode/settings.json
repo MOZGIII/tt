@@ -8,5 +8,8 @@
   "prettier.ignorePath": ".prettierignore",
   "eslint.format.enable": true,
   "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file"
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
 }
