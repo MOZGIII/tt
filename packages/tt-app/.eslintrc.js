@@ -16,5 +16,12 @@ module.exports = {
       files: [".eslintrc.js"],
       env: { node: true },
     },
+    {
+      files: ["*.spec.[ts]sx?", "*.test.[ts]sx?"],
+      rules: {
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+      },
+    },
   ],
 };
