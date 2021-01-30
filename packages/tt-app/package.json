@@ -2,11 +2,11 @@
   "name": "tt-app",
   "private": true,
   "scripts": {
-    "build": "webpack build --env production",
-    "start": "webpack serve",
-    "serve-static": "http-server build",
-    "eslint-check": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
-    "eslint-fix": "eslint --ext \".js,.jsx,.ts,.tsx\" --fix ."
+    "app:build": "webpack build --env production",
+    "app:start": "webpack serve",
+    "app:serve-static": "http-server build",
+    "app:eslint:check": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
+    "app:eslint:fix": "eslint --ext \".js,.jsx,.ts,.tsx\" --fix ."
   },
   "dependencies": {
     "react": "^17.0.1",
