@@ -26,6 +26,7 @@ jobs:
       matrix:
         command:
           - yarn app:build
+          - yarn app:test
           - yarn app:eslint:check
           - yarn prettier:check
     steps:
