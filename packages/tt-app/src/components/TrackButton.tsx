@@ -1,7 +1,11 @@
 import { createStyles, makeStyles } from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
-import { PlayArrow } from "@material-ui/icons";
+import { PlayArrow, Stop } from "@material-ui/icons";
 import React from "react";
+
+type Props = {
+  readonly isTracking?: boolean;
+};
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -13,12 +17,10 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const TrackButton: React.FC = () => {
+const TrackButton: React.FC<Props> = ({ isTracking }: Props) => {
   const classes = useStyles();
   return (
-    <Fab className={classes.root}>
-      <PlayArrow />
-    </Fab>
+    <Fab className={classes.root}>{isTracking ? <Stop /> : <PlayArrow />}</Fab>
   );
 };
 
