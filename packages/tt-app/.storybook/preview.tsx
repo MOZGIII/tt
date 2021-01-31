@@ -12,6 +12,13 @@ export const parameters = {
   docs: {
     theme: storybookThemes.dark,
   },
+  backgrounds: {
+    disable: true,
+    grid: {
+      cellSize: 8,
+      cellAmount: 6,
+    },
+  },
 };
 
 const availableThemes = themeIds();
