@@ -21,4 +21,5 @@ NotTracking.args = { trackingSince: undefined };
 export const Tracking = Template.bind({});
 Tracking.args = {
   trackingSince: Temporal.now.zonedDateTimeISO(),
+  taskName: "My task",
 };
