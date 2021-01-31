@@ -28,6 +28,7 @@ jobs:
           - yarn app:build
           - yarn app:test
           - yarn app:eslint:check
+          - yarn app:storybook:build
           - yarn prettier:check
     steps:
       - uses: actions/checkout@v2
