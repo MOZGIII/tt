@@ -23,5 +23,11 @@ module.exports = {
         "@typescript-eslint/no-unsafe-member-access": "off",
       },
     },
+    {
+      files: ["*.stories.[ts]sx?"],
+      rules: {
+        "functional/immutable-data": "off",
+      },
+    },
   ],
 };
