@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const TrackPanel: React.FC<Props> = ({ trackingSince }: Props) => {
   const classes = useStyles();
+  const isTracking = Boolean(trackingSince);
   return (
     <Box className={classes.root}>
       <Box className={classes.entrySection}>
@@ -38,7 +39,7 @@ const TrackPanel: React.FC<Props> = ({ trackingSince }: Props) => {
         <TrackTimer trackingSince={trackingSince} />
       </Box>
       <Box>
-        <TrackButton />
+        <TrackButton isTracking={isTracking} />
       </Box>
     </Box>
   );
