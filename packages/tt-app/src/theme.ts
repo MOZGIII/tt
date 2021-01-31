@@ -1,9 +1,21 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme, Theme } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({
-  palette: {
-    type: "dark",
-  },
-});
+const themes = {
+  dark: createMuiTheme({
+    palette: {
+      type: "dark",
+    },
+  }),
+  light: createMuiTheme({
+    palette: {
+      type: "light",
+    },
+  }),
+};
 
-export default theme;
+export type ThemeId = keyof typeof themes;
+
+export const themeIds = (): ReadonlyArray<ThemeId> =>
+  Object.keys(themes).map((e) => (e as unknown) as ThemeId);
+
+export const getTheme = (theme: ThemeId): Theme => themes[theme];

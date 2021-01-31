@@ -4,11 +4,13 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import React from "react";
 
 import Page from "./Page";
-import theme from "./theme";
+import { getTheme } from "./theme";
+
+const darkTheme = getTheme("dark");
 
 const App: React.FC = () => (
   <NoSsr>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Page />
     </ThemeProvider>
