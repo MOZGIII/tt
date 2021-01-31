@@ -12,8 +12,10 @@ const Template: Story<ComponentProps<typeof TrackButton>> = (args) => (
   <TrackButton {...args} />
 );
 
-export const Default = Template.bind({}, {});
+export const Default = Template.bind({});
 
-export const NotTracking = Template.bind({}, { isTracking: false });
+export const NotTracking = Template.bind({});
+NotTracking.args = { isTracking: false };
 
-export const Tracking = Template.bind({}, { isTracking: true });
+export const Tracking = Template.bind({});
+Tracking.args = { isTracking: true };

@@ -13,13 +13,12 @@ const Template: Story<ComponentProps<typeof TrackPanel>> = (args) => (
   <TrackPanel {...args} />
 );
 
-export const Default = Template.bind({}, {});
+export const Default = Template.bind({});
 
-export const NotTracking = Template.bind({}, { trackingSince: undefined });
+export const NotTracking = Template.bind({});
+NotTracking.args = { trackingSince: undefined };
 
-export const Tracking = Template.bind(
-  {},
-  {
-    trackingSince: Temporal.now.zonedDateTimeISO(),
-  }
-);
+export const Tracking = Template.bind({});
+Tracking.args = {
+  trackingSince: Temporal.now.zonedDateTimeISO(),
+};
