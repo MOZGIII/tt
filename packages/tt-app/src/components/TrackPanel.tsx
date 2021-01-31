@@ -9,6 +9,7 @@ import TrackTimer from "./TrackTimer";
 
 type Props = {
   readonly trackingSince?: Temporal.ZonedDateTime;
+  readonly taskName?: string;
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -27,13 +28,16 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const TrackPanel: React.FC<Props> = ({ trackingSince }: Props) => {
+const TrackPanel: React.FC<Props> = ({
+  trackingSince,
+  taskName = "",
+}: Props) => {
   const classes = useStyles();
   const isTracking = Boolean(trackingSince);
   return (
     <Box className={classes.root}>
       <Box className={classes.entrySection}>
-        <TrackInput />
+        <TrackInput value={taskName} />
       </Box>
       <Box>
         <TrackTimer trackingSince={trackingSince} />
