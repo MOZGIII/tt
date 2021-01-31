@@ -9,3 +9,4 @@ node_modules
 .browserslistrc
 
 /packages/tt-app/build
+/packages/tt-app/storybook-static
