@@ -17,14 +17,14 @@ module.exports = {
       env: { node: true },
     },
     {
-      files: ["*.spec.[tj]sx?", "*.test.[tj]sx?"],
+      files: ["**/*.spec.[tj]sx?", "**/.test.[tj]sx?"],
       rules: {
         "@typescript-eslint/no-unsafe-call": "off",
         "@typescript-eslint/no-unsafe-member-access": "off",
       },
     },
     {
-      files: ["*.stories.[tj]sx"],
+      files: ["**/*.stories.[tj]sx"],
       rules: {
         "functional/immutable-data": "off",
       },
