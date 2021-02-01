@@ -11,7 +11,7 @@ const themes = {
       type: "light",
     },
   }),
-};
+} as const;
 
 export type ThemeId = keyof typeof themes;
 
