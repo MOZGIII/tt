@@ -64,6 +64,9 @@ const config = {
     "functional/no-mixed-type": "off",
     // - void functions are typical in react code
     "functional/no-return-void": "off",
+    // React
+    // - use React.FC and React.VFC instead of this rule to validate children
+    "react/prop-types": ["error", { ignore: ["children"] }],
   },
 };
 
