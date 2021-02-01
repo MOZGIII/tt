@@ -5,6 +5,7 @@ import React from "react";
 
 type Props = {
   readonly isTracking?: boolean;
+  readonly onClick: () => void;
 };
 
 const useStyles = makeStyles((theme) =>
@@ -17,10 +18,12 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const TrackButton: React.FC<Props> = ({ isTracking }: Props) => {
+const TrackButton: React.FC<Props> = ({ isTracking, onClick }: Props) => {
   const classes = useStyles();
   return (
-    <Fab className={classes.root}>{isTracking ? <Stop /> : <PlayArrow />}</Fab>
+    <Fab className={classes.root} onClick={onClick}>
+      {isTracking ? <Stop /> : <PlayArrow />}
+    </Fab>
   );
 };
 

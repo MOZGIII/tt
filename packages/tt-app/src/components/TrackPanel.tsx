@@ -1,7 +1,7 @@
 import Box from "@material-ui/core/Box";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { Temporal } from "proposal-temporal";
-import React from "react";
+import React, { useCallback } from "react";
 
 import TrackButton from "./TrackButton";
 import TrackInput from "./TrackInput";
@@ -11,6 +11,8 @@ type Props = {
   readonly trackingSince?: Temporal.ZonedDateTime;
   readonly taskName: string;
   readonly onTaskNameChange: (newValue: string) => void;
+  readonly onTrackingStart: () => void;
+  readonly onTrackingStop: () => void;
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -33,9 +35,18 @@ const TrackPanel: React.FC<Props> = ({
   trackingSince,
   taskName,
   onTaskNameChange,
+  onTrackingStart,
+  onTrackingStop,
 }: Props) => {
   const classes = useStyles();
   const isTracking = Boolean(trackingSince);
+  const handleTrackButtonClick = useCallback(() => {
+    if (isTracking) {
+      onTrackingStart();
+    } else {
+      onTrackingStop();
+    }
+  }, [isTracking, onTrackingStart, onTrackingStop]);
   return (
     <Box className={classes.root}>
       <Box className={classes.entrySection}>
@@ -45,7 +56,7 @@ const TrackPanel: React.FC<Props> = ({
         <TrackTimer trackingSince={trackingSince} />
       </Box>
       <Box>
-        <TrackButton isTracking={isTracking} />
+        <TrackButton isTracking={isTracking} onClick={handleTrackButtonClick} />
       </Box>
     </Box>
   );

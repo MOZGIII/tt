@@ -10,6 +10,8 @@ const Page: React.FC = () => (
       trackingSince={Temporal.now.zonedDateTimeISO()}
       taskName=""
       onTaskNameChange={() => undefined}
+      onTrackingStart={() => undefined}
+      onTrackingStop={() => undefined}
     />
   </Paper>
 );
