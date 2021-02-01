@@ -59,6 +59,11 @@ const config = {
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
+    // Functional
+    // - conflicts with the props definitions
+    "functional/no-mixed-type": "off",
+    // - void functions are typical in react code
+    "functional/no-return-void": "off",
   },
 };
 
