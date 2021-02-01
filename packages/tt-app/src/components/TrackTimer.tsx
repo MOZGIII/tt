@@ -35,7 +35,16 @@ const TrackTimer: React.FC<Props> = ({ trackingSince }: Props) => {
   const formattedTime = useMemo(() => {
     return formatTrackingTime(timerState.elapsedTime);
   }, [timerState]);
-  return <InputBase className={classes.root} value={formattedTime} readOnly />;
+  return (
+    <InputBase
+      className={classes.root}
+      value={formattedTime}
+      readOnly
+      inputProps={{
+        role: "timer",
+      }}
+    />
+  );
 };
 
 export default TrackTimer;
