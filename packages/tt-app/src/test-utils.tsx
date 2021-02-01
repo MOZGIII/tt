@@ -1,5 +1,3 @@
-import "@testing-library/jest-dom/extend-expect";
-
 import CssBaseline from "@material-ui/core/CssBaseline";
 import NoSsr from "@material-ui/core/NoSsr";
 import { ThemeProvider } from "@material-ui/core/styles";
