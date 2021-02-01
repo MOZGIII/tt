@@ -16,7 +16,7 @@ const Template: Story<ComponentProps<typeof TrackPanel>> = (args) => (
 export const Default = Template.bind({});
 
 export const NotTracking = Template.bind({});
-NotTracking.args = { trackingSince: undefined };
+NotTracking.args = { trackingSince: undefined, taskName: "" };
 
 export const Tracking = Template.bind({});
 Tracking.args = {

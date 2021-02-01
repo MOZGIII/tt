@@ -6,7 +6,7 @@ import TrackPanel from "./components/TrackPanel";
 
 const Page: React.FC = () => (
   <Paper square>
-    <TrackPanel trackingSince={Temporal.now.zonedDateTimeISO()} />
+    <TrackPanel trackingSince={Temporal.now.zonedDateTimeISO()} taskName="" />
   </Paper>
 );
 
