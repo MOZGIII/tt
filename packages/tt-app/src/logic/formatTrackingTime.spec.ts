@@ -8,7 +8,7 @@ describe("formatTrackingTime", () => {
   });
 
   describe("typical values", () => {
-    const cases: ReadonlyArray<readonly [Temporal.Duration, string]> = [
+    const cases = [
       [new Temporal.Duration(0, 0, 0, 0, 1, 2, 3, 4, 5, 6), "1:02:03"],
       [new Temporal.Duration(0, 0, 0, 0, 0, 0, 1, 0, 0, 0), "0:00:01"],
       [new Temporal.Duration(0, 0, 0, 0, 0, 59, 59, 0, 0, 0), "0:59:59"],
@@ -18,7 +18,7 @@ describe("formatTrackingTime", () => {
       [new Temporal.Duration(0, 0, 0, 1, 0, 0, 0, 0, 0, 0), "24:00:00"],
       [new Temporal.Duration(0, 0, 0, 1, 1, 2, 3, 0, 0, 0), "25:02:03"],
       [new Temporal.Duration(0, 0, 0, 2, 0, 0, 0, 0, 0, 0), "48:00:00"],
-    ];
+    ] as const;
 
     cases.forEach(([duration, expected]) => {
       test(duration.toString(), () => {
