@@ -4,7 +4,7 @@ import { PlayArrow, Stop } from "@material-ui/icons";
 import React from "react";
 
 type Props = {
-  readonly isTracking?: boolean;
+  readonly isTracking: boolean;
   readonly onClick: () => void;
 };
 
