@@ -6,8 +6,7 @@ import React, { useMemo } from "react";
 import useCurrentTime from "../hooks/useCurrentTime";
 import formatTrackingTime from "../logic/formatTrackingTime";
 import timerStateCompute from "../logic/timerStateCompute";
-
-export type TrackingSince = Temporal.ZonedDateTime | null;
+import { TrackingSince } from "../types";
 
 type Props = {
   readonly trackingSince: TrackingSince;
