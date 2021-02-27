@@ -15,7 +15,7 @@ afterEach(() => unfreeze());
 beforeEach(() => jest.useFakeTimers());
 
 test("shows zeroes when not tracking", () => {
-  render(<TrackTimer />);
+  render(<TrackTimer trackingSince={null} />);
   expect(screen.getByRole("timer")).toHaveAttribute("value", "0:00:00");
 });
 

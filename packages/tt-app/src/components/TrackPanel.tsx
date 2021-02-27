@@ -1,14 +1,13 @@
 import Box from "@material-ui/core/Box";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { Temporal } from "proposal-temporal";
 import React, { useCallback } from "react";
 
 import TrackButton from "./TrackButton";
 import TrackInput from "./TrackInput";
-import TrackTimer from "./TrackTimer";
+import TrackTimer, { TrackingSince } from "./TrackTimer";
 
 type Props = {
-  readonly trackingSince?: Temporal.ZonedDateTime;
+  readonly trackingSince: TrackingSince;
   readonly taskName: string;
   readonly onTaskNameChange: (newValue: string) => void;
   readonly onTrackingStart: () => void;

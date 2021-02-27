@@ -13,12 +13,8 @@ const Template: Story<ComponentProps<typeof TrackTimer>> = (args) => (
   <TrackTimer {...args} />
 );
 
-export const Default = Template.bind({});
-
 export const NotTracking = Template.bind({});
-NotTracking.args = { trackingSince: undefined };
+NotTracking.args = { trackingSince: null };
 
 export const Tracking = Template.bind({});
-Tracking.args = {
-  trackingSince: Temporal.now.zonedDateTimeISO(),
-};
+Tracking.args = { trackingSince: Temporal.now.zonedDateTimeISO() };

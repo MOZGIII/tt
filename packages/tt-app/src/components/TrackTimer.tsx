@@ -7,8 +7,10 @@ import useCurrentTime from "../hooks/useCurrentTime";
 import formatTrackingTime from "../logic/formatTrackingTime";
 import timerStateCompute from "../logic/timerStateCompute";
 
+export type TrackingSince = Temporal.ZonedDateTime | null;
+
 type Props = {
-  readonly trackingSince?: Temporal.ZonedDateTime;
+  readonly trackingSince: TrackingSince;
 };
 
 const useStyles = makeStyles((theme: Theme) =>
