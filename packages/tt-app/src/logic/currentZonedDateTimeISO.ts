@@ -1,6 +1,5 @@
 import { Temporal } from "proposal-temporal";
 
-// eslint-disable-next-line functional/no-let
 let override: Temporal.ZonedDateTime | null = null;
 
 // A mock-friendly way to obtain the current time.

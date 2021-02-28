@@ -13,7 +13,6 @@ const config = {
     "simple-import-sort",
     "import",
     "compat",
-    "functional",
     "promise",
     "sonarjs",
   ],
@@ -27,9 +26,6 @@ const config = {
     "plugin:import/warnings",
     "plugin:import/typescript",
     "plugin:compat/recommended",
-    "plugin:functional/external-recommended",
-    "plugin:functional/lite",
-    "plugin:functional/stylitic",
     "plugin:promise/recommended",
     "plugin:sonarjs/recommended",
     "plugin:prettier/recommended",
@@ -57,11 +53,6 @@ const config = {
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    // Functional
-    // - conflicts with the props definitions
-    "functional/no-mixed-type": "off",
-    // - void functions are typical in react code
-    "functional/no-return-void": "off",
     // React
     // - use React.FC and React.VFC instead of this rule to validate children
     "react/prop-types": ["error", { ignore: ["children"] }],

@@ -1,4 +1,3 @@
-// eslint-disable-next-line functional/no-expression-statement, functional/immutable-data
 module.exports = {
   parserOptions: {
     tsconfigRootDir: __dirname,
