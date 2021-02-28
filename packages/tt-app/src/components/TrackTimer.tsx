@@ -26,13 +26,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const TrackTimer: React.FC<Props> = ({ trackingSince }: Props) => {
   const classes = useStyles();
-  const currentTime = useCurrentTime(100);
-  const timerState = useMemo(() => {
-    if (!trackingSince) {
-      return { elapsedTime: new Temporal.Duration() };
-    }
-    return timerStateCompute(trackingSince, currentTime);
-  }, [trackingSince, currentTime]);
+  const currentTime = useCurrentTime(250);
+  const timerState = useMemo(
+    () => timerStateCompute(trackingSince, currentTime),
+    [trackingSince, currentTime]
+  );
   const formattedTime = useMemo(() => {
     return formatTrackingTime(timerState.elapsedTime);
   }, [timerState]);

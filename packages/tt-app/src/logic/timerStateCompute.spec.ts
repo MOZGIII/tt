@@ -1,10 +1,11 @@
 import { Temporal } from "proposal-temporal";
+import { TrackingSince } from "../types";
 
 import timerStateCompute, { TimerState } from "./timerStateCompute";
 
 describe("timerStateCompute", () => {
   const expectTimerState = (
-    trackingSince: Temporal.ZonedDateTime,
+    trackingSince: TrackingSince,
     timeNow: Temporal.ZonedDateTime,
     expected: TimerState
   ) => {
@@ -37,7 +38,17 @@ describe("timerStateCompute", () => {
       Temporal.ZonedDateTime.from("2000-01-01T10:05:00Z[UTC]"),
       Temporal.ZonedDateTime.from("2000-01-01T10:00:00Z[UTC]"),
       {
-        elapsedTime: Temporal.Duration.from("-PT5M"),
+        elapsedTime: Temporal.Duration.from("PT0M"),
+      }
+    );
+  });
+
+  test("non-tracking", () => {
+    expectTimerState(
+      null,
+      Temporal.ZonedDateTime.from("2000-01-01T10:00:00Z[UTC]"),
+      {
+        elapsedTime: Temporal.Duration.from("PT0M"),
       }
     );
   });
