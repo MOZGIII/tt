@@ -33,8 +33,6 @@ const config = {
     "plugin:promise/recommended",
     "plugin:sonarjs/recommended",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-    "prettier/react",
   ],
   settings: {
     react: {
