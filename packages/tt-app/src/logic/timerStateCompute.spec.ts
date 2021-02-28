@@ -1,38 +1,44 @@
 import { Temporal } from "proposal-temporal";
 
-import timerStateCompute from "./timerStateCompute";
+import timerStateCompute, { TimerState } from "./timerStateCompute";
 
 describe("timerStateCompute", () => {
+  const expectTimerState = (
+    trackingSince: Temporal.ZonedDateTime,
+    timeNow: Temporal.ZonedDateTime,
+    expected: TimerState
+  ) => {
+    const actual = timerStateCompute(trackingSince, timeNow);
+    expect(actual.elapsedTime).toMatchDuration(expected.elapsedTime);
+  };
+
   test("trivial", () => {
-    expect(
-      timerStateCompute(
-        Temporal.ZonedDateTime.from("2000-01-01T00:00:00Z[UTC]"),
-        Temporal.ZonedDateTime.from("2000-01-01T00:00:00Z[UTC]")
-      )
-    ).toStrictEqual({
-      elapsedTime: Temporal.Duration.from("P0D"),
-    });
+    expectTimerState(
+      Temporal.ZonedDateTime.from("2000-01-01T00:00:00Z[UTC]"),
+      Temporal.ZonedDateTime.from("2000-01-01T00:00:00Z[UTC]"),
+      {
+        elapsedTime: Temporal.Duration.from("P0D"),
+      }
+    );
   });
 
   test("realistic", () => {
-    expect(
-      timerStateCompute(
-        Temporal.ZonedDateTime.from("2000-01-01T10:00:00Z[UTC]"),
-        Temporal.ZonedDateTime.from("2000-01-01T10:05:00Z[UTC]")
-      )
-    ).toStrictEqual({
-      elapsedTime: Temporal.Duration.from("P5M"),
-    });
+    expectTimerState(
+      Temporal.ZonedDateTime.from("2000-01-01T10:00:00Z[UTC]"),
+      Temporal.ZonedDateTime.from("2000-01-01T10:05:00Z[UTC]"),
+      {
+        elapsedTime: Temporal.Duration.from("PT5M"),
+      }
+    );
   });
 
   test("negative", () => {
-    expect(
-      timerStateCompute(
-        Temporal.ZonedDateTime.from("2000-01-01T10:05:00Z[UTC]"),
-        Temporal.ZonedDateTime.from("2000-01-01T10:00:00Z[UTC]")
-      )
-    ).toStrictEqual({
-      elapsedTime: Temporal.Duration.from("-P5M"),
-    });
+    expectTimerState(
+      Temporal.ZonedDateTime.from("2000-01-01T10:05:00Z[UTC]"),
+      Temporal.ZonedDateTime.from("2000-01-01T10:00:00Z[UTC]"),
+      {
+        elapsedTime: Temporal.Duration.from("-PT5M"),
+      }
+    );
   });
 });
