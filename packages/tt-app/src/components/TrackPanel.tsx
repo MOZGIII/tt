@@ -42,9 +42,9 @@ const TrackPanel: React.FC<Props> = ({
   const isTracking = Boolean(trackingSince);
   const handleTrackButtonClick = useCallback(() => {
     if (isTracking) {
-      onTrackingStart();
-    } else {
       onTrackingStop();
+    } else {
+      onTrackingStart();
     }
   }, [isTracking, onTrackingStart, onTrackingStop]);
   return (

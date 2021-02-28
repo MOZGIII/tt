@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) =>
 const TrackButton: React.FC<Props> = ({ isTracking, onClick }: Props) => {
   const classes = useStyles();
   return (
-    <Fab className={classes.root} onClick={onClick}>
+    <Fab className={classes.root} onClick={onClick} role="trackButton">
       {isTracking ? <Stop /> : <PlayArrow />}
     </Fab>
   );
