@@ -1,5 +1,4 @@
 import Paper from "@material-ui/core/Paper";
-import { Temporal } from "proposal-temporal";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 

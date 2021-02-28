@@ -1,4 +1,5 @@
 import { Temporal } from "proposal-temporal";
+
 import { TrackingSince } from "../types";
 
 export type TimerState = {

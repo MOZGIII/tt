@@ -1,6 +1,7 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Temporal } from "proposal-temporal";
-import { TrackingSince } from "../types";
 
+import { TrackingSince } from "../types";
 import timerStateCompute, { TimerState } from "./timerStateCompute";
 
 describe("timerStateCompute", () => {

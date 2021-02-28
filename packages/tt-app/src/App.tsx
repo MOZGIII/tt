@@ -4,9 +4,9 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import React from "react";
 import { Provider as ReduxProvider } from "react-redux";
 
+import { store } from "./store";
 import Page from "./structure/Page";
 import { getTheme } from "./theme";
-import { store } from "./store";
 
 const darkTheme = getTheme("dark");
 

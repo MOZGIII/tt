@@ -1,8 +1,8 @@
 import Box from "@material-ui/core/Box";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import React, { useCallback } from "react";
-import { TrackingSince } from "../types";
 
+import { TrackingSince } from "../types";
 import TrackButton from "./TrackButton";
 import TrackInput from "./TrackInput";
 import TrackTimer from "./TrackTimer";

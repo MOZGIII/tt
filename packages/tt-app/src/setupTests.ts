@@ -1,5 +1,6 @@
 import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/extend-expect";
+
 import { Temporal } from "proposal-temporal";
 
 expect.extend({
@@ -15,8 +16,8 @@ expect.extend({
     const pass = comparisonResult == 0;
 
     const message = pass
-      ? () => `Expected not ${duration}, but it was received`
-      : () => `Expected ${duration}, got ${received}`;
+      ? () => `Expected not ${duration.toString()}, but it was received`
+      : () => `Expected ${duration.toString()}, got ${received.toString()}`;
 
     return {
       pass,
@@ -26,6 +27,7 @@ expect.extend({
 });
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace jest {
     interface Matchers<R> {
       toMatchDuration(duration: Temporal.Duration): R;

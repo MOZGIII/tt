@@ -1,4 +1,5 @@
 import { createModel } from "@rematch/core";
+
 import { TrackingSince } from "../types";
 import { RootModel } from "./index";
 
@@ -18,5 +19,4 @@ export const tracker = createModel<RootModel>()({
       return { ...state, taskName };
     },
   },
-  effects: (_dispatch) => ({}),
 });

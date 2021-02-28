@@ -1,6 +1,5 @@
 import InputBase from "@material-ui/core/InputBase";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { Temporal } from "proposal-temporal";
 import React, { useMemo } from "react";
 
 import useCurrentTime from "../hooks/useCurrentTime";

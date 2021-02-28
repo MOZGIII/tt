@@ -1,4 +1,5 @@
 import { Models } from "@rematch/core";
+
 import { tracker } from "./tracker";
 
 export interface RootModel extends Models<RootModel> {
