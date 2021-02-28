@@ -14,10 +14,12 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@rematch/core": "^2.0.1",
     "proposal-temporal": "^0.7.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-reconciler": "^0.26.1",
+    "react-redux": "^7.2.2",
     "react-use": "^17.1.1"
   },
   "devDependencies": {
@@ -48,6 +50,7 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/react-reconciler": "^0.26.0",
+    "@types/react-redux": "^7.1.16",
     "@types/testing-library__jest-dom": "^5.9.5",
     "@types/webpack": "^4.41.26",
     "@types/webpack-dev-server": "^3.11.1",
