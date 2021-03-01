@@ -19,7 +19,9 @@ const Page: React.FC = () => {
         onTrackingStart={() =>
           dispatch.tracker.start(currentZonedDateTimeISO())
         }
-        onTrackingStop={() => dispatch.tracker.stop()}
+        onTrackingStop={() =>
+          dispatch.tracker.stopAndRecord(currentZonedDateTimeISO())
+        }
       />
     </Paper>
   );
