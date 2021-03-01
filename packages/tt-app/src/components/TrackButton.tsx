@@ -13,13 +13,17 @@ const useStyles = makeStyles((theme) =>
     root: {
       width: theme.spacing(6),
       height: theme.spacing(6),
-      background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+      background: (props: Props) =>
+        props.isTracking
+          ? "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
+          : "linear-gradient(45deg, #6BFE8B 30%, #8EFF53 90%)",
     },
   })
 );
 
-const TrackButton: React.FC<Props> = ({ isTracking, onClick }: Props) => {
-  const classes = useStyles();
+const TrackButton: React.FC<Props> = (props: Props) => {
+  const classes = useStyles(props);
+  const { isTracking, onClick } = props;
   return (
     <Fab className={classes.root} onClick={onClick} role="trackButton">
       {isTracking ? <Stop /> : <PlayArrow />}
