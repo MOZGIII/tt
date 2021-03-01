@@ -18,8 +18,8 @@ Empty.args = {
   records: [],
 };
 
-export const SmallAmount = Template.bind({});
-SmallAmount.args = {
+export const FewItems = Template.bind({});
+FewItems.args = {
   records: [
     {
       id: "2",
