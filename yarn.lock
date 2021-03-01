@@ -4716,6 +4716,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:^8":
+  version: 8.3.0
+  resolution: "@types/uuid@npm:8.3.0"
+  checksum: 620985aed8fdb4aed153daca5235f4303457a67a4d181efac0021712eabd9edd7e88895f79730c0e651effde7633b1b61e49a81519ac8d4e75019d2ac9b6412f
+  languageName: node
+  linkType: hard
+
 "@types/webpack-dev-server@npm:^3.11.1":
   version: 3.11.1
   resolution: "@types/webpack-dev-server@npm:3.11.1"
@@ -18144,6 +18151,7 @@ resolve@^1.14.2:
     "@types/react-reconciler": ^0.26.0
     "@types/react-redux": ^7.1.16
     "@types/testing-library__jest-dom": ^5.9.5
+    "@types/uuid": ^8
     "@types/webpack": ^4.41.26
     "@types/webpack-dev-server": ^3.11.1
     "@typescript-eslint/eslint-plugin": ^4.15.2
@@ -18178,6 +18186,7 @@ resolve@^1.14.2:
     ts-node: ^9.1.1
     type-fest: ^0.21.2
     typescript: =4.1.5
+    uuid: ^8.3.2
     webpack: ^5.24.2
     webpack-cli: ^4.5.0
     webpack-dev-server: ^3.11.2
@@ -18713,7 +18722,7 @@ typescript@=4.1.5:
   languageName: node
   linkType: hard
 
-"uuid@npm:^8.0.0, uuid@npm:^8.3.0":
+"uuid@npm:^8.0.0, uuid@npm:^8.3.0, uuid@npm:^8.3.2":
   version: 8.3.2
   resolution: "uuid@npm:8.3.2"
   bin:
