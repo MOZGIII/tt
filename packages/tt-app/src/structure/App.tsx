@@ -1,22 +1,19 @@
 import CssBaseline from "@material-ui/core/CssBaseline";
 import NoSsr from "@material-ui/core/NoSsr";
-import { ThemeProvider } from "@material-ui/core/styles";
 import React from "react";
 import { Provider as ReduxProvider } from "react-redux";
 
-import { store } from "./store";
-import Page from "./structure/Page";
-import { getTheme } from "./theme";
-
-const darkTheme = getTheme("dark");
+import { store } from "../store";
+import AppThemeProvider from "./AppThemeProvider";
+import Page from "./Page";
 
 const App: React.FC = () => (
   <NoSsr>
     <ReduxProvider store={store}>
-      <ThemeProvider theme={darkTheme}>
+      <AppThemeProvider>
         <CssBaseline />
         <Page />
-      </ThemeProvider>
+      </AppThemeProvider>
     </ReduxProvider>
   </NoSsr>
 );
