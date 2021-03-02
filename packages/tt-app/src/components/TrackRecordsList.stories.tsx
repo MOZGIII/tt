@@ -22,6 +22,12 @@ export const FewItems = Template.bind({});
 FewItems.args = {
   records: [
     {
+      id: "3",
+      taskName: "My task #3",
+      from: Temporal.ZonedDateTime.from("2021-01-01T15:00:00Z[UTC]"),
+      to: Temporal.ZonedDateTime.from("2021-01-01T15:01:00Z[UTC]"),
+    },
+    {
       id: "2",
       taskName: "My task #2",
       from: Temporal.ZonedDateTime.from("2021-01-01T14:00:00Z[UTC]"),
