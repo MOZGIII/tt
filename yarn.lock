@@ -3271,6 +3271,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rematch/persist@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@rematch/persist@npm:2.0.1"
+  dependencies:
+    redux-persist: ^6.0.0
+  peerDependencies:
+    "@rematch/core": ^2.0.0
+    redux: ^4.0.5
+  checksum: 1adad6b92033aa1906bf8c6810921011935391e943c7e964d1567d3bfec91d6e46a9669433ac14a64890c12ca4376b0e03b2e698ae5cb47ab901749134e34fe4
+  languageName: node
+  linkType: hard
+
 "@sindresorhus/is@npm:^4.0.0":
   version: 4.0.0
   resolution: "@sindresorhus/is@npm:4.0.0"
@@ -15879,7 +15891,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"redux@npm:^4.0.0":
+"redux-persist@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "redux-persist@npm:6.0.0"
+  peerDependencies:
+    redux: ">4.0.0"
+  checksum: 6b7c74526155c53ecdd49ec51d27fa07d265454440c734e8f1ef71dcbb78ae864a9965e152b9b1f35950ad933b66a79b8cf6be555f2dc89e1a61f01fc70a2965
+  languageName: node
+  linkType: hard
+
+"redux@npm:^4.0.0, redux@npm:^4.0.5":
   version: 4.0.5
   resolution: "redux@npm:4.0.5"
   dependencies:
@@ -18129,6 +18150,7 @@ resolve@^1.14.2:
     "@mdx-js/react": ^1.6.22
     "@pmmmwh/react-refresh-webpack-plugin": ^0.4.3
     "@rematch/core": ^2.0.1
+    "@rematch/persist": ^2.0.1
     "@storybook/addon-actions": ^6.1.20
     "@storybook/addon-docs": ^6.1.20
     "@storybook/addon-essentials": ^6.1.20
@@ -18182,6 +18204,8 @@ resolve@^1.14.2:
     react-redux: ^7.2.2
     react-refresh: ^0.9.0
     react-use: ^17.1.1
+    redux: ^4.0.5
+    redux-persist: ^6.0.0
     ts-jest: ^26.5.2
     ts-node: ^9.1.1
     type-fest: ^0.21.2
