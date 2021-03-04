@@ -9,6 +9,11 @@ import { RootModel, RootTransforms } from "./index";
 
 type RecordsState = { [key: string]: TrackingRecord };
 
+type ResumePayload = {
+  trackingSince: Temporal.ZonedDateTime;
+  recordId: TrackingRecordId;
+};
+
 export const records = createModel<RootModel>()({
   state: {} as RecordsState,
   reducers: {
@@ -16,6 +21,16 @@ export const records = createModel<RootModel>()({
       return { ...state, [record.id]: record };
     },
   },
+  effects: (dispatch) => ({
+    resume({ trackingSince, recordId }: ResumePayload, rootState) {
+      const record = rootState.records[recordId];
+      if (!record) {
+        throw new Error("resuming non-existing id");
+      }
+      dispatch.tracker.stopAndRecord(trackingSince);
+      dispatch.tracker.resume(trackingSince, record.taskName);
+    },
+  }),
 });
 
 type SerializedRecordsState = Array<{

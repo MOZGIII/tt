@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import TrackPanel from "../components/TrackPanel";
 import TrackRecordsList from "../components/TrackRecordsList";
 import currentZonedDateTimeISO from "../logic/currentZonedDateTimeISO";
+import { TrackingRecordId } from "../logic/trackingRecord";
 import { Dispatch, RootState } from "../store";
 
 const Page: React.FC = () => {
@@ -31,7 +32,15 @@ const Page: React.FC = () => {
           }
         />
       </Paper>
-      <TrackRecordsList records={recordsList} />
+      <TrackRecordsList
+        records={recordsList}
+        onResume={(recordId: TrackingRecordId) => {
+          dispatch.records.resume({
+            trackingSince: currentZonedDateTimeISO(),
+            recordId,
+          });
+        }}
+      />
     </>
   );
 };

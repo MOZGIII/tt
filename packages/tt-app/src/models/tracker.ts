@@ -17,6 +17,9 @@ export const tracker = createModel<RootModel>()({
     start(state, trackingSince: Temporal.ZonedDateTime) {
       return { ...state, trackingSince };
     },
+    resume(state, trackingSince: Temporal.ZonedDateTime, taskName: string) {
+      return { ...state, trackingSince, taskName };
+    },
     stop(state) {
       return { ...state, trackingSince: null, taskName: "" };
     },
@@ -28,7 +31,7 @@ export const tracker = createModel<RootModel>()({
     stopAndRecord(to: Temporal.ZonedDateTime, rootState) {
       const { trackingSince: from, taskName } = rootState.tracker;
       if (!from) {
-        throw new Error("stopAndRecord while not tracking");
+        return;
       }
       dispatch.tracker.stop();
       dispatch.records.upsert(
