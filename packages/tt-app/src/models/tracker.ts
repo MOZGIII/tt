@@ -14,7 +14,7 @@ export const tracker = createModel<RootModel>()({
     taskName: "",
   },
   reducers: {
-    start(state, trackingSince: TrackingSince) {
+    start(state, trackingSince: Temporal.ZonedDateTime) {
       return { ...state, trackingSince };
     },
     stop(state) {
