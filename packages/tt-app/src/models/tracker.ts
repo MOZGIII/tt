@@ -1,9 +1,12 @@
 import { createModel } from "@rematch/core";
 import { Temporal } from "proposal-temporal";
+import { createTransform, Transform } from "redux-persist";
 
 import { makeTrackingRecord } from "../logic/trackingRecord";
+import { RootState } from "../store";
+import { EndState } from "../storeTransforms";
 import { TrackingSince } from "../types";
-import { RootModel } from "./index";
+import { RootModel, RootTransforms } from "./index";
 
 export const tracker = createModel<RootModel>()({
   state: {
@@ -38,3 +41,26 @@ export const tracker = createModel<RootModel>()({
     },
   }),
 });
+
+type SerializedTrackerState = {
+  trackingSince: string | null;
+  taskName: string;
+};
+
+export const trackerTransform: Transform<
+  typeof tracker.state,
+  SerializedTrackerState,
+  RootState,
+  EndState<RootModel, RootTransforms>
+> = createTransform(
+  ({ trackingSince, ...rest }) => ({
+    ...rest,
+    trackingSince: trackingSince ? trackingSince.toString() : null,
+  }),
+  ({ trackingSince, ...rest }) => ({
+    ...rest,
+    trackingSince: trackingSince
+      ? Temporal.ZonedDateTime.from(trackingSince)
+      : null,
+  })
+);
