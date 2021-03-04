@@ -14,8 +14,8 @@ export const tracker = createModel<RootModel>()({
     taskName: "",
   },
   reducers: {
-    start(state, val: TrackingSince) {
-      return { ...state, trackingSince: val };
+    start(state, trackingSince: TrackingSince) {
+      return { ...state, trackingSince };
     },
     stop(state) {
       return { ...state, trackingSince: null, taskName: "" };
