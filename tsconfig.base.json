@@ -3,6 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "noErrorTruncation": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "strict": true
