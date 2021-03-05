@@ -1,7 +1,8 @@
 import Box from "@material-ui/core/Box";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import React, { useMemo } from "react";
+import React from "react";
 
+import useMapOverArray from "../hooks/useMapOverArray";
 import { TrackingRecord, TrackingRecordId } from "../logic/trackingRecord";
 import TrackRecordsListItem from "./TrackRecordsListItem";
 
@@ -32,20 +33,20 @@ const TrackRecordsList: React.FC<Props> = ({
   onTaskNameChange,
 }: Props) => {
   const classes = useStyles();
-  const onResumes = useMemo(
-    () => records.map((record) => () => onResume(record.id)),
-    [records, onResume]
+  const onResumes = useMapOverArray(
+    records,
+    (record) => () => onResume(record.id),
+    [onResume]
   );
-  const onDeletes = useMemo(
-    () => records.map((record) => () => onDelete(record.id)),
-    [records, onDelete]
+  const onDeletes = useMapOverArray(
+    records,
+    (record) => () => onDelete(record.id),
+    [onDelete]
   );
-  const onTaskNameChanges = useMemo(
-    () =>
-      records.map((record) => (taskName: string) =>
-        onTaskNameChange(record.id, taskName)
-      ),
-    [records, onTaskNameChange]
+  const onTaskNameChanges = useMapOverArray(
+    records,
+    (record) => (taskName: string) => onTaskNameChange(record.id, taskName),
+    [onTaskNameChange]
   );
   return (
     <Box className={classes.root}>
