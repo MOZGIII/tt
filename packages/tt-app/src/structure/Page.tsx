@@ -40,6 +40,9 @@ const Page: React.FC = () => {
             recordId,
           });
         }}
+        onDelete={(recordId: TrackingRecordId) => {
+          dispatch.records.delete(recordId);
+        }}
       />
     </>
   );

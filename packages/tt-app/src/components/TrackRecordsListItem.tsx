@@ -1,13 +1,16 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Typography } from "@material-ui/core";
+
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import InputBase from "@material-ui/core/InputBase";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { PlayArrow } from "@material-ui/icons";
+import Typography from "@material-ui/core/Typography";
+import { MoreVert, PlayArrow } from "@material-ui/icons";
 import clsx from "clsx";
-import React from "react";
+import React, { useCallback } from "react";
 
 import formatTrackDuration from "../logic/formatTrackDuration";
 import formatTrackTime from "../logic/formatTrackTime";
@@ -16,6 +19,7 @@ import { TrackingRecord } from "../logic/trackingRecord";
 type Props = {
   readonly record: TrackingRecord;
   readonly onResume: () => void;
+  readonly onDelete: () => void;
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -61,11 +65,32 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     resume: {},
     resumeButton: {},
+    dropdown: {},
+    dropdownButton: {},
   })
 );
 
-const TrackRecordsListItem: React.FC<Props> = ({ record, onResume }: Props) => {
+const TrackRecordsListItem: React.FC<Props> = ({
+  record,
+  onResume,
+  onDelete,
+}: Props) => {
   const classes = useStyles();
+  const [
+    menuAnchorEl,
+    setMenuAnchorEl,
+  ] = React.useState<HTMLButtonElement | null>(null);
+
+  const handleOpenMenu = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      setMenuAnchorEl(event.currentTarget);
+    },
+    [setMenuAnchorEl]
+  );
+  const handleClose = useCallback(() => {
+    setMenuAnchorEl(null);
+  }, [setMenuAnchorEl]);
+
   return (
     <Paper
       className={classes.root}
@@ -113,6 +138,25 @@ const TrackRecordsListItem: React.FC<Props> = ({ record, onResume }: Props) => {
         >
           <PlayArrow />
         </IconButton>
+      </Box>
+      <Box className={classes.dropdown}>
+        <IconButton
+          className={classes.dropdownButton}
+          onClick={handleOpenMenu}
+          role={`track-records-list-item-${record.id}-dropdown`}
+          size="small"
+        >
+          <MoreVert />
+        </IconButton>
+        <Menu
+          id={`track-records-list-item-${record.id}-dropdown-menu`}
+          anchorEl={menuAnchorEl}
+          keepMounted
+          open={Boolean(menuAnchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={onDelete}>Delete</MenuItem>
+        </Menu>
       </Box>
     </Paper>
   );

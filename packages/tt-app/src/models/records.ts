@@ -20,6 +20,11 @@ export const records = createModel<RootModel>()({
     upsert(state, record: TrackingRecord) {
       return { ...state, [record.id]: record };
     },
+    delete(state, recordId: TrackingRecordId) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { [recordId]: _, ...rest } = state;
+      return rest;
+    },
   },
   effects: (dispatch) => ({
     resume({ trackingSince, recordId }: ResumePayload, rootState) {
