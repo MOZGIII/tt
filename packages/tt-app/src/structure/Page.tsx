@@ -44,6 +44,14 @@ const Page: React.FC = () => {
         onDelete={(recordId: TrackingRecordId) => {
           dispatch.records.delete(recordId);
         }}
+        onTaskNameChange={(recordId: TrackingRecordId, taskName: string) => {
+          dispatch.records.patch({
+            recordId,
+            patch: {
+              taskName,
+            },
+          });
+        }}
       />
     </>
   );

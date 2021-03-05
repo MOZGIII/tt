@@ -20,6 +20,7 @@ type Props = {
   readonly record: TrackingRecord;
   readonly onResume: () => void;
   readonly onDelete: () => void;
+  readonly onTaskNameChange: (taskName: string) => void;
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -74,12 +75,19 @@ const TrackRecordsListItem: React.FC<Props> = ({
   record,
   onResume,
   onDelete,
+  onTaskNameChange,
 }: Props) => {
   const classes = useStyles();
   const [
     menuAnchorEl,
     setMenuAnchorEl,
   ] = React.useState<HTMLButtonElement | null>(null);
+
+  const handleTaskNameChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) =>
+      onTaskNameChange(e.target.value),
+    [onTaskNameChange]
+  );
 
   const handleOpenMenu = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -103,6 +111,7 @@ const TrackRecordsListItem: React.FC<Props> = ({
           fullWidth
           placeholder="Add description"
           value={record.taskName}
+          onChange={handleTaskNameChange}
         />
       </Box>
       <Box className={classes.timeInterval}>

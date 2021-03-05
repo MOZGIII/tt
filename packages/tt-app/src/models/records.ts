@@ -9,6 +9,11 @@ import { RootModel, RootTransforms } from "./index";
 
 type RecordsState = { [key: string]: TrackingRecord };
 
+type PatchPayload = {
+  recordId: TrackingRecordId;
+  patch: Partial<Omit<TrackingRecord, "id">>;
+};
+
 type ResumePayload = {
   trackingSince: Temporal.ZonedDateTime;
   recordId: TrackingRecordId;
@@ -19,6 +24,18 @@ export const records = createModel<RootModel>()({
   reducers: {
     upsert(state, record: TrackingRecord) {
       return { ...state, [record.id]: record };
+    },
+    patch(state, { recordId, patch }: PatchPayload) {
+      const record = state[recordId];
+      if (!record) {
+        throw new Error("patching a non-existing record id");
+      }
+      const newRecord = {
+        ...record,
+        ...patch,
+        id: record.id,
+      };
+      return { ...state, [newRecord.id]: newRecord };
     },
     delete(state, recordId: TrackingRecordId) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -9,6 +9,10 @@ type Props = {
   readonly records: Array<TrackingRecord>;
   readonly onResume: (recordId: TrackingRecordId) => void;
   readonly onDelete: (recordId: TrackingRecordId) => void;
+  readonly onTaskNameChange: (
+    recordId: TrackingRecordId,
+    taskName: string
+  ) => void;
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -25,6 +29,7 @@ const TrackRecordsList: React.FC<Props> = ({
   records,
   onResume,
   onDelete,
+  onTaskNameChange,
 }: Props) => {
   const classes = useStyles();
   const onResumes = useMemo(
@@ -35,6 +40,13 @@ const TrackRecordsList: React.FC<Props> = ({
     () => records.map((record) => () => onDelete(record.id)),
     [records, onDelete]
   );
+  const onTaskNameChanges = useMemo(
+    () =>
+      records.map((record) => (taskName: string) =>
+        onTaskNameChange(record.id, taskName)
+      ),
+    [records, onTaskNameChange]
+  );
   return (
     <Box className={classes.root}>
       {records.map((record, idx) => (
@@ -43,6 +55,7 @@ const TrackRecordsList: React.FC<Props> = ({
           record={record}
           onResume={onResumes[idx]}
           onDelete={onDeletes[idx]}
+          onTaskNameChange={onTaskNameChanges[idx]}
         />
       ))}
     </Box>
