@@ -30,6 +30,7 @@ const Page: React.FC = () => {
           onTrackingStop={() =>
             dispatch.tracker.stopAndRecord(currentZonedDateTimeISO())
           }
+          onTrackingCancel={() => dispatch.tracker.stop()}
         />
       </Paper>
       <TrackRecordsList

@@ -15,6 +15,7 @@ test("starts the tracker if button is pressed while not tracking", async () => {
         onTrackingStart={onTrackingStart}
         onTrackingStop={other}
         onTaskNameChange={other}
+        onTrackingCancel={other}
       />
     );
 
@@ -37,6 +38,7 @@ test("stops the tracker if button is pressed while tracking", async () => {
         onTrackingStart={other}
         onTrackingStop={onTrackingStop}
         onTaskNameChange={other}
+        onTrackingCancel={other}
       />
     );
 
