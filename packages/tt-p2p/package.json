@@ -1,0 +1,26 @@
+{
+  "name": "tt-app",
+  "private": true,
+  "scripts": {
+    "app:test": "jest",
+    "app:build": "webpack build --env production",
+    "app:eslint:check": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
+    "app:eslint:fix": "eslint --ext \".js,.jsx,.ts,.tsx\" --fix ."
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@rematch/core": "^2.0.1",
+    "@rematch/persist": "^2.0.1",
+    "proposal-temporal": "^0.7.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-reconciler": "^0.26.1",
+    "react-redux": "^7.2.2",
+    "react-use": "^17.1.1",
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {}
+}
