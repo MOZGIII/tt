@@ -6,7 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "update-sdk": "pnpify --sdk"
+    "update-sdk": "pnpify --sdk",
+    "start": "printf 'Use \"%s\"\n' 'yarn app:start'"
   },
   "devDependencies": {
     "@yarnpkg/pnpify": "^2.4.0"
