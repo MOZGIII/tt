@@ -1,0 +1,63 @@
+name: code
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  bare:
+    runs-on: ubuntu-22.04
+    name: ${{ matrix.operation.name }}
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        operation:
+          - name: yarn install --check-cache
+            command: yarn install --immutable --immutable-cache --check-cache
+          - name: yarn constraints
+            command: yarn constraints
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.node-version'
+      - run: ${{ matrix.operation.command }}
+
+  with-packages:
+    runs-on: ubuntu-20.04
+    name: ${{ matrix.operation.name }}
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        operation:
+          - name: yarn app:build
+            command: yarn app:build
+          - name: yarn app:test
+            command: yarn app:test
+          - name: yarn app:eslint:check
+            command: yarn app:eslint:check
+          - name: yarn app:storybook:build
+            command: yarn app:storybook:build
+          - name: yarn prettier:check
+            command: yarn prettier:check
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.node-version'
+      - run: yarn install --immutable --immutable-cache
+      - run: ${{ matrix.operation.command }}
