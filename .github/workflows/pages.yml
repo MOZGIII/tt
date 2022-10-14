@@ -1,0 +1,33 @@
+name: pages
+
+on:
+  workflow_call:
+    inputs:
+      artifact:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  pages:
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-22.04
+    name: Github Pages
+    timeout-minutes: 20
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+        with:
+          artifact_name: ${{ inputs.artifact }}

@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - master
+    tags:
+      - "v*.*.*"
   pull_request:
+    branches:
+      - master
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
@@ -94,3 +98,23 @@ jobs:
           path: ${{ runner.temp }}/build.tar
           if-no-files-found: error
           retention-days: 5
+
+  pages:
+    name: deploy ${{ matrix.operation.name }} to pages
+    needs:
+      - build
+    if: github.event_name != 'pull_request'
+    permissions:
+      pages: write
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        operation:
+          - name: app
+            artifact: app.tar
+            environment: github-pages
+    uses: ./.github/workflows/pages.yml
+    with:
+      artifact: ${{ matrix.operation.artifact }}
+      environment: ${{ matrix.operation.environment }}
