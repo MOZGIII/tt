@@ -2,6 +2,8 @@ name: code
 
 on:
   push:
+    branches:
+      - master
   pull_request:
 
 concurrency:
@@ -44,14 +46,10 @@ jobs:
       fail-fast: false
       matrix:
         operation:
-          - name: yarn app:build
-            command: yarn app:build
           - name: yarn app:test
             command: yarn app:test
           - name: yarn app:eslint:check
             command: yarn app:eslint:check
-          - name: yarn app:storybook:build
-            command: yarn app:storybook:build
           - name: yarn prettier:check
             command: yarn prettier:check
     steps:
@@ -61,3 +59,38 @@ jobs:
           node-version-file: '.node-version'
       - run: yarn install --immutable --immutable-cache
       - run: ${{ matrix.operation.command }}
+
+  build:
+    runs-on: ubuntu-20.04
+    name: ${{ matrix.operation.name }}
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    outputs:
+      artifact: ${{ matrix.operation.artifact }}
+    strategy:
+      fail-fast: false
+      matrix:
+        operation:
+          - name: yarn app:build
+            command: yarn app:build
+            path: packages/tt-app/build
+            artifact: app.tar
+          - name: yarn app:storybook:build
+            command: yarn app:storybook:build
+            path: packages/tt-app/storybook-static
+            artifact: app-storybook.tar
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.node-version'
+      - run: yarn install --immutable --immutable-cache
+      - run: ${{ matrix.operation.command }}
+      - run: tar --directory "${{ matrix.operation.path }}" -cvf "${{ runner.temp }}/build.tar" "."
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.operation.artifact }}
+          path: ${{ runner.temp }}/build.tar
+          if-no-files-found: error
+          retention-days: 5
