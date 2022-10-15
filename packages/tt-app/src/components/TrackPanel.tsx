@@ -53,10 +53,19 @@ const TrackPanel: React.FC<Props> = ({
       onTrackingStart();
     }
   }, [isTracking, onTrackingStart, onTrackingStop]);
+  const handleTrackInputSubmit = useCallback(() => {
+    if (!isTracking) {
+      onTrackingStart();
+    }
+  }, [isTracking, onTrackingStart]);
   return (
     <Box className={classes.root}>
       <Box className={classes.entrySection}>
-        <TrackInput value={taskName} onChange={onTaskNameChange} />
+        <TrackInput
+          value={taskName}
+          onChange={onTaskNameChange}
+          onSubmit={handleTrackInputSubmit}
+        />
       </Box>
       <Box>
         <TrackTimer trackingSince={trackingSince} />
