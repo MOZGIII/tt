@@ -1,6 +1,6 @@
 import { Models } from "@rematch/core";
 
-import { Transforms } from "../storeTransforms";
+import { ModelTransforms } from "../lib/modelsTransform";
 import { records, recordsTransform } from "./records";
 import { theme } from "./theme";
 import { tracker, trackerTransform } from "./tracker";
@@ -13,7 +13,8 @@ export interface RootModel extends Models<RootModel> {
 
 export const models: RootModel = { tracker, theme, records };
 
-export interface RootTransforms extends Transforms<RootModel, RootTransforms> {
+export interface RootTransforms
+  extends ModelTransforms<RootModel, RootTransforms> {
   tracker: typeof trackerTransform;
   records: typeof recordsTransform;
 }
