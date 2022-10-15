@@ -78,10 +78,8 @@ const TrackRecordsListItem: React.FC<Props> = ({
   onTaskNameChange,
 }: Props) => {
   const classes = useStyles();
-  const [
-    menuAnchorEl,
-    setMenuAnchorEl,
-  ] = React.useState<HTMLButtonElement | null>(null);
+  const [menuAnchorEl, setMenuAnchorEl] =
+    React.useState<HTMLButtonElement | null>(null);
 
   const handleTaskNameChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) =>
