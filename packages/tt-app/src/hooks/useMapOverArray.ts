@@ -1,19 +1,22 @@
 import { DependencyList, useMemo } from "react";
 
-type MapFn<T extends Array<any>, Idx extends keyof T, R> = (
+type MapFn<T extends Array<unknown>, Idx extends keyof T, R> = (
   item: T[Idx],
   index: Idx,
   array: T
 ) => R;
 
-function mapOverArray<T extends Array<any>, F extends MapFn<T, number, R>, R>(
-  array: T,
-  fn: F
-): Array<R> {
-  return array.map(fn as any);
+function mapOverArray<
+  T extends Array<unknown>,
+  F extends MapFn<T, number, R>,
+  R
+>(array: T, fn: F): Array<R> {
+  return array.map(
+    fn as unknown as (value: unknown, index: number, array: unknown[]) => R
+  );
 }
 
-const useMapOverArray = <T extends any[], C>(
+const useMapOverArray = <T extends unknown[], C>(
   list: T,
   fn: MapFn<T, number, C>,
   deps: DependencyList | undefined

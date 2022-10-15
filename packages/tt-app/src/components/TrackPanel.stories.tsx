@@ -1,5 +1,5 @@
-import { Meta, Story } from "@storybook/react/types-6-0";
 import { Temporal } from "@js-temporal/polyfill";
+import type { Meta, Story } from "@storybook/react/types-6-0";
 import React, { ComponentProps } from "react";
 
 import TrackPanel from "./TrackPanel";

@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Models, RematchRootState } from "@rematch/core";
 import { createTransform, Transform } from "redux-persist";
-import { ValueOf } from "type-fest";
+import type { ValueOf } from "type-fest";
 
 export type Transforms<
   TModels extends Models<TModels>,

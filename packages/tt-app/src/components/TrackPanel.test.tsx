@@ -1,4 +1,5 @@
 import { Temporal } from "@js-temporal/polyfill";
+import React from "react";
 
 import { fireEvent, render, screen, waitFor } from "../test-utils";
 import TrackPanel from "./TrackPanel";

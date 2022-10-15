@@ -1,4 +1,5 @@
 import { Temporal } from "@js-temporal/polyfill";
+import React from "react";
 
 import { freeze, unfreeze } from "../logic/currentZonedDateTimeISO";
 import { act, render, screen } from "../test-utils";
