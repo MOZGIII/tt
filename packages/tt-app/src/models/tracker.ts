@@ -2,9 +2,9 @@ import { Temporal } from "@js-temporal/polyfill";
 import { createModel } from "@rematch/core";
 import { createTransform, Transform } from "redux-persist";
 
+import { SerializedState } from "../lib/modelsTransform";
 import { makeTrackingRecord } from "../logic/trackingRecord";
 import { RootState } from "../store";
-import { EndState } from "../storeTransforms";
 import { TrackingSince } from "../types";
 import { RootModel, RootTransforms } from "./index";
 
@@ -54,7 +54,7 @@ export const trackerTransform: Transform<
   typeof tracker.state,
   SerializedTrackerState,
   RootState,
-  EndState<RootModel, RootTransforms>
+  SerializedState<RootModel, RootTransforms>
 > = createTransform(
   ({ trackingSince, ...rest }) => ({
     ...rest,

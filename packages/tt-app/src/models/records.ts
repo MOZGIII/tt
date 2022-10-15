@@ -2,9 +2,9 @@ import { Temporal } from "@js-temporal/polyfill";
 import { createModel } from "@rematch/core";
 import { createTransform, Transform } from "redux-persist";
 
+import { SerializedState } from "../lib/modelsTransform";
 import { TrackingRecord, TrackingRecordId } from "../logic/trackingRecord";
 import { RootState } from "../store";
-import { EndState } from "../storeTransforms";
 import { RootModel, RootTransforms } from "./index";
 
 type RecordsState = { [key: string]: TrackingRecord };
@@ -66,7 +66,7 @@ export const recordsTransform: Transform<
   typeof records.state,
   SerializedRecordsState,
   RootState,
-  EndState<RootModel, RootTransforms>
+  SerializedState<RootModel, RootTransforms>
 > = createTransform(
   (state) => [
     ...Object.values(state).map(({ to, from, ...rest }) => ({
