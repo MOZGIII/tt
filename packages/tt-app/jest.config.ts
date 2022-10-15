@@ -3,4 +3,5 @@ export default {
   errorOnDeprecated: true,
   preset: "ts-jest",
   setupFilesAfterEnv: [`<rootDir>/src/setupTests.ts`],
+  testEnvironment: "jsdom",
 };
