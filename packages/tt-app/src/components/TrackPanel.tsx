@@ -54,10 +54,12 @@ const TrackPanel: React.FC<Props> = ({
     }
   }, [isTracking, onTrackingStart, onTrackingStop]);
   const handleTrackInputSubmit = useCallback(() => {
-    if (!isTracking) {
+    if (isTracking) {
+      onTrackingStop();
+    } else {
       onTrackingStart();
     }
-  }, [isTracking, onTrackingStart]);
+  }, [isTracking, onTrackingStart, onTrackingStop]);
   return (
     <Box className={classes.root}>
       <Box className={classes.entrySection}>
