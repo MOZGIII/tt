@@ -41,7 +41,7 @@ const config = (env: Env): webpack.Configuration => {
     ]),
     devtool: isProduction ? "source-map" : "inline-source-map",
     devServer: {
-      static: outputPath,
+      static: "./public",
       hot: true,
     },
     output: {
