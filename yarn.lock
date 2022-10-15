@@ -3827,6 +3827,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@js-temporal/polyfill@npm:^0.4.2":
+  version: 0.4.2
+  resolution: "@js-temporal/polyfill@npm:0.4.2"
+  dependencies:
+    jsbi: ^4.1.0
+    tslib: ^2.3.1
+  checksum: 315e0cb880151b0150ba3039e99ce8cac846834b59981d0b49f5f00c5a5a6f7d270cb95bad7527e145fe026d0e8e4036d32fb1780af8e1bb641a765436e9e458
+  languageName: node
+  linkType: hard
+
 "@leichtgewicht/ip-codec@npm:^2.0.1":
   version: 2.0.4
   resolution: "@leichtgewicht/ip-codec@npm:2.0.4"
@@ -8062,13 +8072,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"big-integer@npm:^1.6.48":
-  version: 1.6.48
-  resolution: "big-integer@npm:1.6.48"
-  checksum: fc43ae12ebf2b2a58d6da92ef7069666d131fa993be4020cb1a11e384f6d8e7a69dced7f69d27b65a6aff2e6abb548fb823303bde138eab60b556100c17761f3
-  languageName: node
-  linkType: hard
-
 "big-integer@npm:^1.6.7":
   version: 1.6.51
   resolution: "big-integer@npm:1.6.51"
@@ -10449,7 +10452,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-abstract@npm:^1.18.3, es-abstract@npm:^1.19.0, es-abstract@npm:^1.19.1, es-abstract@npm:^1.19.2, es-abstract@npm:^1.19.5":
+"es-abstract@npm:^1.19.0, es-abstract@npm:^1.19.1, es-abstract@npm:^1.19.2, es-abstract@npm:^1.19.5":
   version: 1.20.4
   resolution: "es-abstract@npm:1.20.4"
   dependencies:
@@ -14405,6 +14408,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"jsbi@npm:^4.1.0":
+  version: 4.3.0
+  resolution: "jsbi@npm:4.3.0"
+  checksum: 27c4f178eb7fd9d1756144066fdebc62f4a0176e877f55e646e8ce84075c13551bd575a316b9959ccdcca9d5dc05a81c9907cfa09f0cfeb43c9777797e36b0e9
+  languageName: node
+  linkType: hard
+
 "jsbn@npm:~0.1.0":
   version: 0.1.1
   resolution: "jsbn@npm:0.1.1"
@@ -17150,16 +17160,6 @@ fsevents@^1.2.7:
   dependencies:
     xtend: ^4.0.0
   checksum: fcf87c6542e59a8bbe31ca0b3255a4a63ac1059b01b04469680288998bcfa97f341ca989566adbb63975f4d85339030b82320c324a511532d390910d1c583893
-  languageName: node
-  linkType: hard
-
-"proposal-temporal@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "proposal-temporal@npm:0.9.0"
-  dependencies:
-    big-integer: ^1.6.48
-    es-abstract: ^1.18.3
-  checksum: aba1e83b9ccbccafd13a4116c87f436a2f57aca2060a4d440aa13f3ce337376f4440e31e009912eaa2e09331e66bd6a79a6c6ae79f557fb4075249b6c1f0150d
   languageName: node
   linkType: hard
 
@@ -20161,6 +20161,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.3.1":
+  version: 2.4.0
+  resolution: "tslib@npm:2.4.0"
+  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
+  languageName: node
+  linkType: hard
+
 "tsutils@npm:^3.21.0":
   version: 3.21.0
   resolution: "tsutils@npm:3.21.0"
@@ -20181,6 +20188,7 @@ resolve@^2.0.0-next.3:
     "@babel/preset-env": ^7.19.4
     "@babel/preset-react": ^7.18.6
     "@babel/preset-typescript": ^7.18.6
+    "@js-temporal/polyfill": ^0.4.2
     "@material-ui/core": ^4.12.4
     "@material-ui/icons": ^4.11.3
     "@mdx-js/react": ^2.1.5
@@ -20233,7 +20241,6 @@ resolve@^2.0.0-next.3:
     http-server: ^14.1.1
     inline-chunk-html-plugin: ^1.1.1
     jest: ^29.2.0
-    proposal-temporal: ^0.9.0
     react: ^18.2.0
     react-dom: ^18.2.0
     react-reconciler: ^0.29.0

@@ -1,5 +1,5 @@
 import { createModel } from "@rematch/core";
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 import { createTransform, Transform } from "redux-persist";
 
 import { TrackingRecord, TrackingRecordId } from "../logic/trackingRecord";

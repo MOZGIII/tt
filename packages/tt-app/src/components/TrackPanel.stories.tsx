@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 import React, { ComponentProps } from "react";
 
 import TrackPanel from "./TrackPanel";
@@ -21,6 +21,6 @@ NotTracking.args = {
 
 export const Tracking = Template.bind({});
 Tracking.args = {
-  trackingSince: Temporal.now.zonedDateTimeISO(),
+  trackingSince: Temporal.Now.zonedDateTimeISO(),
   taskName: "My task",
 };

@@ -1,4 +1,4 @@
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 
 const formatTrackTime = (time: Temporal.ZonedDateTime): string =>
   time.toLocaleString(undefined, {

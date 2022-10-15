@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 
 import { TrackingSince } from "../types";
 import timerStateCompute, { TimerState } from "./timerStateCompute";

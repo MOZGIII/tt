@@ -1,4 +1,4 @@
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 import React from "react";
 
 import { act, fireEvent, render, screen, waitFor } from "../test-utils";

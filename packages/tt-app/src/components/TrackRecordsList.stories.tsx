@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 import React, { ComponentProps } from "react";
 
 import TrackRecordsList from "./TrackRecordsList";

@@ -1,4 +1,4 @@
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 import { v4 as uuidv4 } from "uuid";
 
 export type TrackingRecordId = string;

@@ -1,4 +1,4 @@
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 
 const formatTrackDuration = (duration: Temporal.Duration): string =>
   `${hours(duration)}:${pad(duration.minutes)}:${pad(duration.seconds)}`;
