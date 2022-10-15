@@ -18306,6 +18306,8 @@ __metadata:
   resolution: "tt-theme@workspace:packages/tt-theme"
   dependencies:
     "@material-ui/core": ^4.12.4
+    eslint: ^8.25.0
+    typescript: ^4.8.4
   languageName: unknown
   linkType: soft
 

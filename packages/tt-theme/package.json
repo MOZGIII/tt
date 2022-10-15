@@ -2,7 +2,16 @@
   "name": "tt-theme",
   "private": true,
   "main": "src/index.ts",
+  "scripts": {
+    "theme:tsc:check": "tsc --noEmit",
+    "theme:eslint:check": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
+    "theme:eslint:fix": "eslint --ext \".js,.jsx,.ts,.tsx\" --fix ."
+  },
   "dependencies": {
     "@material-ui/core": "^4.12.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0",
+    "typescript": "^4.8.4"
   }
 }
