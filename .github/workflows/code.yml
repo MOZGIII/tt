@@ -56,6 +56,10 @@ jobs:
             command: yarn app:eslint:check
           - name: yarn app:tsc:check
             command: yarn app:tsc:check
+          - name: yarn theme:eslint:check
+            command: yarn theme:eslint:check
+          - name: yarn theme:tsc:check
+            command: yarn theme:tsc:check
           - name: yarn prettier:check
             command: yarn prettier:check
     steps:
