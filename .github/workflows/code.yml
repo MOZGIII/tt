@@ -54,6 +54,8 @@ jobs:
             command: yarn app:test
           - name: yarn app:eslint:check
             command: yarn app:eslint:check
+          - name: yarn app:tsc:check
+            command: yarn app:tsc:check
           - name: yarn prettier:check
             command: yarn prettier:check
     steps:
