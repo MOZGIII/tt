@@ -3,6 +3,7 @@ import NoSsr from "@material-ui/core/NoSsr";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { render, RenderOptions, RenderResult } from "@testing-library/react";
 import React, { PropsWithChildren, ReactElement } from "react";
+import "@testing-library/jest-dom";
 
 import { getTheme } from "./theme";
 
