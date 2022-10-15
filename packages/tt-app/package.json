@@ -27,6 +27,7 @@
     "react-use": "^17.4.0",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
+    "tt-theme": "workspace:*",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

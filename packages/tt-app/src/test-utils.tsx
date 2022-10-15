@@ -5,8 +5,7 @@ import NoSsr from "@material-ui/core/NoSsr";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { render, RenderOptions, RenderResult } from "@testing-library/react";
 import React, { PropsWithChildren, ReactElement } from "react";
-
-import { getTheme } from "./theme";
+import { getTheme } from "tt-theme";
 
 const AllTheProviders: React.FC<PropsWithChildren> = ({ children }) => {
   const theme = getTheme("dark");

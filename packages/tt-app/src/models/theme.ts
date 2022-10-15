@@ -1,6 +1,6 @@
 import { createModel } from "@rematch/core";
+import { ThemeId } from "tt-theme";
 
-import { ThemeId } from "../theme";
 import { RootModel } from "./index";
 
 export const theme = createModel<RootModel>()({
