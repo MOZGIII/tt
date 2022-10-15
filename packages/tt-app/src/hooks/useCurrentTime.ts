@@ -1,4 +1,4 @@
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 import { useState } from "react";
 import { useHarmonicIntervalFn } from "react-use";
 

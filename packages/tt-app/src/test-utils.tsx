@@ -1,12 +1,14 @@
+import "@testing-library/jest-dom";
+
 import CssBaseline from "@material-ui/core/CssBaseline";
 import NoSsr from "@material-ui/core/NoSsr";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { render, RenderOptions, RenderResult } from "@testing-library/react";
-import React, { ReactElement } from "react";
+import React, { PropsWithChildren, ReactElement } from "react";
 
 import { getTheme } from "./theme";
 
-const AllTheProviders: React.FC = ({ children }) => {
+const AllTheProviders: React.FC<PropsWithChildren> = ({ children }) => {
   const theme = getTheme("dark");
   return (
     <NoSsr>
@@ -23,6 +25,6 @@ const customRender = (
   options?: Omit<RenderOptions, "queries">
 ): RenderResult => render(ui, { wrapper: AllTheProviders, ...options });
 
-export * from "@testing-library/react";
+export * from "@testing-library/react"; // eslint-disable-line import/export
 
-export { customRender as render };
+export { customRender as render }; // eslint-disable-line import/export

@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/extend-expect";
 
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 
 expect.extend({
   toMatchDuration: (

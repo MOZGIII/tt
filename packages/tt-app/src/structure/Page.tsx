@@ -13,9 +13,10 @@ const Page: React.FC = () => {
   const records = useSelector((state: RootState) => state.records);
   const dispatch = useDispatch<Dispatch>();
 
-  const recordsList = useMemo(() => Object.values(records).reverse(), [
-    records,
-  ]);
+  const recordsList = useMemo(
+    () => Object.values(records).reverse(),
+    [records]
+  );
 
   return (
     <>

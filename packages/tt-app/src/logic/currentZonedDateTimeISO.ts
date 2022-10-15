@@ -1,10 +1,10 @@
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
 
 let override: Temporal.ZonedDateTime | null = null;
 
 // A mock-friendly way to obtain the current time.
 const currentZonedDateTimeISO = (): Temporal.ZonedDateTime =>
-  override || Temporal.now.zonedDateTimeISO();
+  override || Temporal.Now.zonedDateTimeISO();
 
 export default currentZonedDateTimeISO;
 

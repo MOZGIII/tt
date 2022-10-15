@@ -1,12 +1,12 @@
-import { createMuiTheme, Theme } from "@material-ui/core/styles";
+import { createTheme, Theme } from "@material-ui/core/styles";
 
 const themes = {
-  dark: createMuiTheme({
+  dark: createTheme({
     palette: {
       type: "dark",
     },
   }),
-  light: createMuiTheme({
+  light: createTheme({
     palette: {
       type: "light",
     },
@@ -16,6 +16,6 @@ const themes = {
 export type ThemeId = keyof typeof themes;
 
 export const themeIds = (): ReadonlyArray<ThemeId> =>
-  Object.keys(themes).map((e) => (e as unknown) as ThemeId);
+  Object.keys(themes).map((e) => e as unknown as ThemeId);
 
 export const getTheme = (theme: ThemeId): Theme => themes[theme];

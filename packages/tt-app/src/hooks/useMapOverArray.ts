@@ -1,24 +1,26 @@
 import { DependencyList, useMemo } from "react";
 
-type ArrayItem<T extends readonly unknown[]> = T extends readonly (infer I)[]
-  ? I
-  : never;
+type MapFn<T extends Array<unknown>, Idx extends keyof T, R> = (
+  item: T[Idx],
+  index: Idx,
+  array: T
+) => R;
 
-const useMapOverArray = <T extends readonly unknown[], C>(
+function mapOverArray<
+  T extends Array<unknown>,
+  F extends MapFn<T, number, R>,
+  R
+>(array: T, fn: F): Array<R> {
+  return array.map(
+    fn as unknown as (value: unknown, index: number, array: unknown[]) => R
+  );
+}
+
+const useMapOverArray = <T extends unknown[], C>(
   list: T,
-  factory: (item: ArrayItem<T>, index: number, array: T) => C,
+  fn: MapFn<T, number, C>,
   deps: DependencyList | undefined
 ): Array<C> =>
-  useMemo(
-    () =>
-      list.map(
-        (factory as unknown) as (
-          item: unknown,
-          index: number,
-          array: readonly unknown[]
-        ) => C
-      ),
-    [factory, list].concat(deps || [])
-  );
+  useMemo(() => mapOverArray(list, fn), [fn, list, ...(deps || [])]);
 
 export default useMapOverArray;

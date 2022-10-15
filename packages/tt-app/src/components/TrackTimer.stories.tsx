@@ -1,5 +1,5 @@
-import { Meta, Story } from "@storybook/react/types-6-0";
-import { Temporal } from "proposal-temporal";
+import { Temporal } from "@js-temporal/polyfill";
+import type { Meta, Story } from "@storybook/react/types-6-0";
 import React, { ComponentProps } from "react";
 
 import TrackTimer from "./TrackTimer";
@@ -17,4 +17,4 @@ export const NotTracking = Template.bind({});
 NotTracking.args = { trackingSince: null };
 
 export const Tracking = Template.bind({});
-Tracking.args = { trackingSince: Temporal.now.zonedDateTimeISO() };
+Tracking.args = { trackingSince: Temporal.Now.zonedDateTimeISO() };
