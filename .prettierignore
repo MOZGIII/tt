@@ -3,10 +3,14 @@
 /.yarn
 /constraints.pro
 /yarn.lock
+/.node-version
 
 node_modules
 .gitignore
 .browserslistrc
+.dockerignore
+Dockerfile
+Caddyfile
 
 /packages/tt-app/build
 /packages/tt-app/storybook-static

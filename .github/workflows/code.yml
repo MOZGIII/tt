@@ -37,7 +37,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version-file: '.node-version'
+          node-version-file: ".node-version"
       - run: ${{ matrix.operation.command }}
 
   with-packages:
@@ -62,7 +62,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version-file: '.node-version'
+          node-version-file: ".node-version"
       - run: yarn install --immutable --immutable-cache
       - run: ${{ matrix.operation.command }}
 
@@ -90,7 +90,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version-file: '.node-version'
+          node-version-file: ".node-version"
       - run: yarn install --immutable --immutable-cache
       - run: ${{ matrix.operation.command }}
       - run: tar --directory "${{ matrix.operation.path }}" -cvf "${{ runner.temp }}/build.tar" "."
