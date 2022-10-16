@@ -29,7 +29,11 @@ const config = (env: Env): webpack.Configuration => {
     entry: path.resolve(__dirname, "./src/index.tsx"),
     target: "web",
     plugins: filter([
-      !isProduction && new ReactRefreshWebpackPlugin(),
+      !isProduction &&
+        new ReactRefreshWebpackPlugin({
+          esModule: true,
+          overlay: { sockProtocol: "ws" },
+        }),
       new CleanWebpackPlugin(),
       new ForkTsCheckerWebpackPlugin(),
       new HtmlWebpackPlugin({
@@ -74,14 +78,15 @@ const config = (env: Env): webpack.Configuration => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "babel-loader",
+              loader: "swc-loader",
               options: {
-                presets: [
-                  "@babel/preset-env",
-                  ["@babel/preset-react", { runtime: "automatic" }],
-                  "@babel/preset-typescript",
-                ],
-                plugins: filter([!isProduction && "react-refresh/babel"]),
+                jsc: {
+                  transform: {
+                    react: {
+                      refresh: !isProduction,
+                    },
+                  },
+                },
               },
             },
           ],
