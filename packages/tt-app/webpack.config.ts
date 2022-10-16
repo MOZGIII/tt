@@ -1,8 +1,11 @@
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import * as swc from "@swc/core";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import * as fs from "fs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import InlineChunkHtmlPlugin from "inline-chunk-html-plugin";
+import merge from "lodash.merge";
 import * as path from "path";
 import * as webpack from "webpack";
 import * as webpackDevServer from "webpack-dev-server";
@@ -24,6 +27,15 @@ type Env = {
 
 const config = (env: Env): webpack.Configuration => {
   const isProduction = env.production === true;
+
+  const swcRc = JSON.parse(
+    fs.readFileSync(`${__dirname}/.swcrc`, "utf-8")
+  ) as swc.Config;
+  const swcOverrides = {
+    jsc: { transform: { react: { refresh: !isProduction } } },
+  };
+  const swcOptions = merge(swcRc, swcOverrides);
+
   return {
     mode: isProduction ? "production" : "development",
     entry: path.resolve(__dirname, "./src/index.tsx"),
@@ -79,15 +91,7 @@ const config = (env: Env): webpack.Configuration => {
           use: [
             {
               loader: "swc-loader",
-              options: {
-                jsc: {
-                  transform: {
-                    react: {
-                      refresh: !isProduction,
-                    },
-                  },
-                },
-              },
+              options: swcOptions,
             },
           ],
         },
