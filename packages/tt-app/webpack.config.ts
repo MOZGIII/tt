@@ -1,3 +1,5 @@
+import "webpack-dev-server";
+
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import * as swc from "@swc/core";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
@@ -8,13 +10,6 @@ import InlineChunkHtmlPlugin from "inline-chunk-html-plugin";
 import merge from "lodash.merge";
 import * as path from "path";
 import * as webpack from "webpack";
-import * as webpackDevServer from "webpack-dev-server";
-
-declare module "webpack" {
-  interface Configuration {
-    devServer?: webpackDevServer.Configuration;
-  }
-}
 
 const outputPath = path.resolve(__dirname, "build");
 
