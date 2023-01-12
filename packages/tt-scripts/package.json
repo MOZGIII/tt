@@ -7,6 +7,6 @@
     "prettier:fix": "cd ../.. && prettier --ignore-path .prettierignore --write \"$INIT_CWD/**/*\""
   },
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.2"
   }
 }

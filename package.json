@@ -7,5 +7,12 @@
   ],
   "scripts": {
     "start": "printf 'Use \"%s\"\n' 'yarn app:start'"
+  },
+  "resolutions": {
+    "swc-loader": "0.2.3"
+  },
+  "devDependencies": {
+    "@types/lodash.merge": "^4",
+    "lodash.merge": "^4.6.2"
   }
 }

@@ -1,17 +1,15 @@
+import "webpack-dev-server";
+
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import * as swc from "@swc/core";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import * as fs from "fs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import InlineChunkHtmlPlugin from "inline-chunk-html-plugin";
+import merge from "lodash.merge";
 import * as path from "path";
 import * as webpack from "webpack";
-import * as webpackDevServer from "webpack-dev-server";
-
-declare module "webpack" {
-  interface Configuration {
-    devServer?: webpackDevServer.Configuration;
-  }
-}
 
 const outputPath = path.resolve(__dirname, "build");
 
@@ -24,12 +22,25 @@ type Env = {
 
 const config = (env: Env): webpack.Configuration => {
   const isProduction = env.production === true;
+
+  const swcRc = JSON.parse(
+    fs.readFileSync(`${__dirname}/.swcrc`, "utf-8")
+  ) as swc.Config;
+  const swcOverrides = {
+    jsc: { transform: { react: { refresh: !isProduction } } },
+  };
+  const swcOptions = merge(swcRc, swcOverrides);
+
   return {
     mode: isProduction ? "production" : "development",
     entry: path.resolve(__dirname, "./src/index.tsx"),
     target: "web",
     plugins: filter([
-      !isProduction && new ReactRefreshWebpackPlugin(),
+      !isProduction &&
+        new ReactRefreshWebpackPlugin({
+          esModule: true,
+          overlay: { sockProtocol: "ws" },
+        }),
       new CleanWebpackPlugin(),
       new ForkTsCheckerWebpackPlugin(),
       new HtmlWebpackPlugin({
@@ -74,15 +85,8 @@ const config = (env: Env): webpack.Configuration => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "babel-loader",
-              options: {
-                presets: [
-                  "@babel/preset-env",
-                  ["@babel/preset-react", { runtime: "automatic" }],
-                  "@babel/preset-typescript",
-                ],
-                plugins: filter([!isProduction && "react-refresh/babel"]),
-              },
+              loader: "swc-loader",
+              options: swcOptions,
             },
           ],
         },
