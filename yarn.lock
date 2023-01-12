@@ -3282,27 +3282,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rematch/core@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@rematch/core@npm:2.2.0"
-  peerDependencies:
-    redux: ">=4"
-  checksum: c2ae22b9c6d19b7bd8a4d8679a8c5248733e95314eabdc0e8d85ecb4042432d315e8476fa3ccde6fbc5bde220577d55f3d7d39202136bd4a7b2ad7bc978625d0
-  languageName: node
-  linkType: hard
-
-"@rematch/persist@npm:^2.1.2":
-  version: 2.1.2
-  resolution: "@rematch/persist@npm:2.1.2"
-  dependencies:
-    redux-persist: ^6.0.0
-  peerDependencies:
-    "@rematch/core": ">=2"
-    redux: ">=4"
-  checksum: 341c2a83bf02df81c1d04beb229c695ffb0ea64deb6a12766534403b41a2f51b32c8cd549b1a1986294e9059ec5ce80f58062a8701f51bf195e679ffa8669222
-  languageName: node
-  linkType: hard
-
 "@sinclair/typebox@npm:^0.24.1":
   version: 0.24.46
   resolution: "@sinclair/typebox@npm:0.24.46"
@@ -15977,16 +15956,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redux-persist@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "redux-persist@npm:6.0.0"
-  peerDependencies:
-    redux: ">4.0.0"
-  checksum: edaf10dbf17351ce8058d0802357adae8665b3a1ff39371834e37838ddbe1a79cccbc717b8ba54acb5307651ccf51d0f7dc1cbc8dbae0726ff952d11ef61c6b8
-  languageName: node
-  linkType: hard
-
-"redux@npm:^4.0.0, redux@npm:^4.2.0":
+"redux@npm:^4.0.0":
   version: 4.2.0
   resolution: "redux@npm:4.2.0"
   dependencies:
@@ -18057,8 +18027,6 @@ __metadata:
     "@material-ui/icons": ^4.11.3
     "@mdx-js/react": ^2.2.1
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.10
-    "@rematch/core": ^2.2.0
-    "@rematch/persist": ^2.1.2
     "@storybook/addon-actions": ^6.5.15
     "@storybook/addon-docs": ^6.5.15
     "@storybook/addon-essentials": ^6.5.15
@@ -18112,8 +18080,6 @@ __metadata:
     react-redux: ^8.0.5
     react-refresh: ^0.14.0
     react-use: ^17.4.0
-    redux: ^4.2.0
-    redux-persist: ^6.0.0
     storybook-addon-swc: ^1.1.9
     swc-loader: ^0.2.3
     ts-jest: ^29.0.4
@@ -18124,6 +18090,7 @@ __metadata:
     webpack: ^5.75.0
     webpack-cli: ^5.0.1
     webpack-dev-server: ^4.11.1
+    zustand: ^4.3.1
   languageName: unknown
   linkType: soft
 
@@ -18605,7 +18572,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.0.0":
+"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.0.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:
@@ -19481,6 +19448,23 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^4.3.1":
+  version: 4.3.1
+  resolution: "zustand@npm:4.3.1"
+  dependencies:
+    use-sync-external-store: 1.2.0
+  peerDependencies:
+    immer: ">=9.0"
+    react: ">=16.8"
+  peerDependenciesMeta:
+    immer:
+      optional: true
+    react:
+      optional: true
+  checksum: bc35ebdfb2028e33d112ec113d77c95bdc3b693b3c2d78eacdc40017cf8f7f32934a49213aab3ee5e3767b44869bd306da171e6438b89fbc78417b419725e895
   languageName: node
   linkType: hard
 

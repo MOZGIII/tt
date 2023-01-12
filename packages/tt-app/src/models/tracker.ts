@@ -1,69 +1,94 @@
 import { Temporal } from "@js-temporal/polyfill";
-import { createModel } from "@rematch/core";
-import { createTransform, Transform } from "redux-persist";
+import { create } from "zustand";
+import { persist, PersistOptions } from "zustand/middleware";
 
-import { SerializedState } from "../lib/modelsTransform";
 import { makeTrackingRecord } from "../logic/trackingRecord";
-import { RootState } from "../store";
 import { TrackingSince } from "../types";
-import { RootModel, RootTransforms } from "./index";
+import { createStorage } from ".";
+import { recordsActions } from "./records";
 
-export const tracker = createModel<RootModel>()({
-  state: {
-    trackingSince: null as TrackingSince,
-    taskName: "",
+export type TrackerState = {
+  trackingSince: TrackingSince | null;
+  taskName: string;
+};
+
+const defaultValue: TrackerState = {
+  trackingSince: null,
+  taskName: "",
+};
+
+export const trackerActions = {
+  start: (trackingSince: Temporal.ZonedDateTime) =>
+    useTrackerStore.setState((state) => ({ ...state, trackingSince }), true),
+
+  resume: (trackingSince: Temporal.ZonedDateTime, taskName: string) =>
+    useTrackerStore.setState(
+      (state) => ({
+        ...state,
+        trackingSince,
+        taskName,
+      }),
+      true
+    ),
+
+  stop: () =>
+    useTrackerStore.setState(
+      (state) => ({
+        ...state,
+        trackingSince: null,
+        taskName: "",
+      }),
+      true
+    ),
+
+  setTaskName: (taskName: string) =>
+    useTrackerStore.setState((state) => ({ ...state, taskName }), true),
+
+  stopAndRecord: (to: Temporal.ZonedDateTime) => {
+    const state = useTrackerStore.getState();
+    const { trackingSince: from, taskName } = state;
+    if (!from) {
+      return;
+    }
+    trackerActions.stop();
+    recordsActions.upsert(
+      makeTrackingRecord({
+        taskName,
+        from,
+        to,
+      })
+    );
   },
-  reducers: {
-    start(state, trackingSince: Temporal.ZonedDateTime) {
-      return { ...state, trackingSince };
-    },
-    resume(state, trackingSince: Temporal.ZonedDateTime, taskName: string) {
-      return { ...state, trackingSince, taskName };
-    },
-    stop(state) {
-      return { ...state, trackingSince: null, taskName: "" };
-    },
-    setTaskName(state, taskName: string) {
-      return { ...state, taskName };
-    },
-  },
-  effects: (dispatch) => ({
-    stopAndRecord(to: Temporal.ZonedDateTime, rootState) {
-      const { trackingSince: from, taskName } = rootState.tracker;
-      if (!from) {
-        return;
-      }
-      dispatch.tracker.stop();
-      dispatch.records.upsert(
-        makeTrackingRecord({
-          taskName,
-          from,
-          to,
-        })
-      );
-    },
-  }),
-});
+};
 
 type SerializedTrackerState = {
   trackingSince: string | null;
   taskName: string;
 };
 
-export const trackerTransform: Transform<
-  typeof tracker.state,
-  SerializedTrackerState,
-  RootState,
-  SerializedState<RootModel, RootTransforms>
-> = createTransform(
-  ({ trackingSince, ...rest }) => ({
-    ...rest,
-    trackingSince: trackingSince ? trackingSince.toString() : null,
-  }),
-  ({ trackingSince, ...rest }) => ({
-    ...rest,
-    trackingSince: trackingSince
-      ? Temporal.ZonedDateTime.from(trackingSince)
-      : null,
-  })
+const serialize = ({
+  trackingSince,
+  ...rest
+}: TrackerState): SerializedTrackerState => ({
+  ...rest,
+  trackingSince: trackingSince ? trackingSince.toString() : null,
+});
+
+const deserialize = ({
+  trackingSince,
+  ...rest
+}: SerializedTrackerState): TrackerState => ({
+  ...rest,
+  trackingSince: trackingSince
+    ? Temporal.ZonedDateTime.from(trackingSince)
+    : null,
+});
+
+const persistOptions: PersistOptions<TrackerState, SerializedTrackerState> = {
+  name: "tracker",
+  storage: createStorage(serialize, deserialize),
+};
+
+export const useTrackerStore = create<TrackerState>()(
+  persist(() => defaultValue, persistOptions)
 );

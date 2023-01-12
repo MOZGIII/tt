@@ -1,25 +1,17 @@
-import { Models } from "@rematch/core";
+import {
+  createJSONStorage,
+  createSerdeStorage,
+  Deserialize,
+  Serialize,
+} from "../lib/zustandPersistUtils";
 
-import { ModelTransforms } from "../lib/modelsTransform";
-import { records, recordsTransform } from "./records";
-import { theme } from "./theme";
-import { tracker, trackerTransform } from "./tracker";
+export const standardGetStorage = () => localStorage;
 
-export interface RootModel extends Models<RootModel> {
-  tracker: typeof tracker;
-  theme: typeof theme;
-  records: typeof records;
+export function createStorage<State, RawState = State>(
+  serialize: Serialize<State, RawState>,
+  deserialize: Deserialize<State, RawState>
+) {
+  return createSerdeStorage(serialize, deserialize, () =>
+    createJSONStorage<RawState>(standardGetStorage)
+  );
 }
-
-export const models: RootModel = { tracker, theme, records };
-
-export interface RootTransforms
-  extends ModelTransforms<RootModel, RootTransforms> {
-  tracker: typeof trackerTransform;
-  records: typeof recordsTransform;
-}
-
-export const transforms: RootTransforms = {
-  tracker: trackerTransform,
-  records: recordsTransform,
-};

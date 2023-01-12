@@ -1,11 +1,10 @@
 import { Temporal } from "@js-temporal/polyfill";
-import { createModel } from "@rematch/core";
-import { createTransform, Transform } from "redux-persist";
+import { create } from "zustand";
+import { persist, PersistOptions } from "zustand/middleware";
 
-import { SerializedState } from "../lib/modelsTransform";
 import { TrackingRecord, TrackingRecordId } from "../logic/trackingRecord";
-import { RootState } from "../store";
-import { RootModel, RootTransforms } from "./index";
+import { createStorage } from ".";
+import { trackerActions } from "./tracker";
 
 type RecordsState = { [key: string]: TrackingRecord };
 
@@ -19,13 +18,16 @@ type ResumePayload = {
   recordId: TrackingRecordId;
 };
 
-export const records = createModel<RootModel>()({
-  state: {} as RecordsState,
-  reducers: {
-    upsert(state, record: TrackingRecord) {
-      return { ...state, [record.id]: record };
-    },
-    patch(state, { recordId, patch }: PatchPayload) {
+const defaultValue: RecordsState = {};
+
+export const recordsActions = {
+  upsert: (record: TrackingRecord) =>
+    useRecordsStore.setState(
+      (state) => ({ ...state, [record.id]: record }),
+      true
+    ),
+  patch: ({ recordId, patch }: PatchPayload) =>
+    useRecordsStore.setState((state) => {
       const record = state[recordId];
       if (!record) {
         throw new Error("patching a non-existing record id");
@@ -36,24 +38,23 @@ export const records = createModel<RootModel>()({
         id: record.id,
       };
       return { ...state, [newRecord.id]: newRecord };
-    },
-    delete(state, recordId: TrackingRecordId) {
+    }, true),
+  delete: (recordId: TrackingRecordId) =>
+    useRecordsStore.setState((state) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { [recordId]: _, ...rest } = state;
       return rest;
-    },
+    }, true),
+  resume: ({ trackingSince, recordId }: ResumePayload) => {
+    const state = useRecordsStore.getState();
+    const record = state[recordId];
+    if (!record) {
+      throw new Error("resuming non-existing id");
+    }
+    trackerActions.stopAndRecord(trackingSince);
+    trackerActions.resume(trackingSince, record.taskName);
   },
-  effects: (dispatch) => ({
-    resume({ trackingSince, recordId }: ResumePayload, rootState) {
-      const record = rootState.records[recordId];
-      if (!record) {
-        throw new Error("resuming non-existing id");
-      }
-      dispatch.tracker.stopAndRecord(trackingSince);
-      dispatch.tracker.resume(trackingSince, record.taskName);
-    },
-  }),
-});
+};
 
 type SerializedRecordsState = Array<{
   id: TrackingRecordId;
@@ -62,30 +63,33 @@ type SerializedRecordsState = Array<{
   taskName: string;
 }>;
 
-export const recordsTransform: Transform<
-  typeof records.state,
-  SerializedRecordsState,
-  RootState,
-  SerializedState<RootModel, RootTransforms>
-> = createTransform(
-  (state) => [
-    ...Object.values(state).map(({ to, from, ...rest }) => ({
-      ...rest,
-      to: to.toString(),
-      from: from.toString(),
-    })),
-  ],
-  (state) =>
-    state.reduce(
-      (acc, { id, from, to, ...rest }) => ({
-        ...acc,
-        [id]: {
-          id,
-          from: Temporal.ZonedDateTime.from(from),
-          to: Temporal.ZonedDateTime.from(to),
-          ...rest,
-        },
-      }),
-      {}
-    )
+const serialize = (state: RecordsState): SerializedRecordsState => [
+  ...Object.values(state).map(({ to, from, ...rest }) => ({
+    ...rest,
+    to: to.toString(),
+    from: from.toString(),
+  })),
+];
+
+const deserialize = (state: SerializedRecordsState): RecordsState =>
+  state.reduce(
+    (acc, { id, from, to, ...rest }) => ({
+      ...acc,
+      [id]: {
+        id,
+        from: Temporal.ZonedDateTime.from(from),
+        to: Temporal.ZonedDateTime.from(to),
+        ...rest,
+      },
+    }),
+    {}
+  );
+
+const persistOptions: PersistOptions<RecordsState, SerializedRecordsState> = {
+  name: "records",
+  storage: createStorage(serialize, deserialize),
+};
+
+export const useRecordsStore = create<RecordsState>()(
+  persist(() => defaultValue, persistOptions)
 );
