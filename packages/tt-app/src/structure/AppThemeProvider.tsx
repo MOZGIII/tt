@@ -1,12 +1,11 @@
 import { ThemeProvider } from "@material-ui/core/styles";
 import React, { PropsWithChildren, useMemo } from "react";
-import { useSelector } from "react-redux";
 
-import { RootState } from "../store";
+import { useThemeStore } from "../models/theme";
 import { getTheme } from "../theme";
 
 const AppThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const themeId = useSelector((state: RootState) => state.theme);
+  const themeId = useThemeStore((state) => state.themeId);
   const theme = useMemo(() => getTheme(themeId), [themeId]);
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
