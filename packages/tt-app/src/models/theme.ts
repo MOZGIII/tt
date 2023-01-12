@@ -14,7 +14,7 @@ const defaultValue: ThemeState = {
 
 export const themeActions = {
   switch: (themeId: ThemeId): void => {
-    useThemeStore.setState((state) => ({ ...state, themeId }));
+    useThemeStore.setState((state) => ({ ...state, themeId }), true);
   },
 };
 
