@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { persist, PersistOptions } from "zustand/middleware";
 
 import { ThemeId } from "../theme";
-import { createStorage } from ".";
 
 type ThemeState = {
   themeId: ThemeId;
