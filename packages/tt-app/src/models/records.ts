@@ -85,7 +85,7 @@ const deserialize = (state: SerializedRecordsState): RecordsState =>
     {},
   );
 
-const persistOptions: PersistOptions<RecordsState, SerializedRecordsState> = {
+const persistOptions: PersistOptions<RecordsState> = {
   name: "records",
   storage: createStorage(serialize, deserialize),
 };

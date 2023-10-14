@@ -84,7 +84,7 @@ const deserialize = ({
     : null,
 });
 
-const persistOptions: PersistOptions<TrackerState, SerializedTrackerState> = {
+const persistOptions: PersistOptions<TrackerState> = {
   name: "tracker",
   storage: createStorage(serialize, deserialize),
 };
