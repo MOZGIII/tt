@@ -1,5 +1,5 @@
 import { Temporal } from "@js-temporal/polyfill";
-import type { Meta, Story } from "@storybook/react/types-6-0";
+import type { Meta, StoryFn } from "@storybook/react";
 import React, { ComponentProps } from "react";
 
 import TrackPanel from "./TrackPanel";
@@ -9,7 +9,7 @@ export default {
   component: TrackPanel,
 } as Meta;
 
-const Template: Story<ComponentProps<typeof TrackPanel>> = (args) => (
+const Template: StoryFn<ComponentProps<typeof TrackPanel>> = (args) => (
   <TrackPanel {...args} />
 );
 

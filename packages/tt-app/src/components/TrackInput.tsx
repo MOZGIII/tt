@@ -15,14 +15,14 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: theme.spacing(3),
       padding: theme.spacing(1),
     },
-  })
+  }),
 );
 
 const TrackInput: React.FC<Props> = ({ value, onChange, onSubmit }: Props) => {
   const classes = useStyles();
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value),
-    [onChange]
+    [onChange],
   );
   const handleKeyUp = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -32,13 +32,13 @@ const TrackInput: React.FC<Props> = ({ value, onChange, onSubmit }: Props) => {
       e.preventDefault();
       onSubmit();
     },
-    [onSubmit]
+    [onSubmit],
   );
   const inputProps = useMemo(
     () => ({
       onKeyUp: handleKeyUp,
     }),
-    [handleKeyUp]
+    [handleKeyUp],
   );
   return (
     <InputBase

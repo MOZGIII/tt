@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) =>
           ? "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
           : "linear-gradient(45deg, #6BFE8B 30%, #96F321 90%)",
     },
-  })
+  }),
 );
 
 const TrackButton: React.FC<Props> = (props: Props) => {

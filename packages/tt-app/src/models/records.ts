@@ -24,7 +24,7 @@ export const recordsActions = {
   upsert: (record: TrackingRecord) =>
     useRecordsStore.setState(
       (state) => ({ ...state, [record.id]: record }),
-      true
+      true,
     ),
   patch: ({ recordId, patch }: PatchPayload) =>
     useRecordsStore.setState((state) => {
@@ -82,14 +82,14 @@ const deserialize = (state: SerializedRecordsState): RecordsState =>
         ...rest,
       },
     }),
-    {}
+    {},
   );
 
-const persistOptions: PersistOptions<RecordsState, SerializedRecordsState> = {
+const persistOptions: PersistOptions<RecordsState> = {
   name: "records",
   storage: createStorage(serialize, deserialize),
 };
 
 export const useRecordsStore = create<RecordsState>()(
-  persist(() => defaultValue, persistOptions)
+  persist(() => defaultValue, persistOptions),
 );

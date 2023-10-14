@@ -28,7 +28,7 @@ export const trackerActions = {
         trackingSince,
         taskName,
       }),
-      true
+      true,
     ),
 
   stop: () =>
@@ -38,7 +38,7 @@ export const trackerActions = {
         trackingSince: null,
         taskName: "",
       }),
-      true
+      true,
     ),
 
   setTaskName: (taskName: string) =>
@@ -56,7 +56,7 @@ export const trackerActions = {
         taskName,
         from,
         to,
-      })
+      }),
     );
   },
 };
@@ -84,11 +84,11 @@ const deserialize = ({
     : null,
 });
 
-const persistOptions: PersistOptions<TrackerState, SerializedTrackerState> = {
+const persistOptions: PersistOptions<TrackerState> = {
   name: "tracker",
   storage: createStorage(serialize, deserialize),
 };
 
 export const useTrackerStore = create<TrackerState>()(
-  persist(() => defaultValue, persistOptions)
+  persist(() => defaultValue, persistOptions),
 );

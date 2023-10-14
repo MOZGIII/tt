@@ -1,12 +1,11 @@
 import "@testing-library/jest-dom";
-import "@testing-library/jest-dom/extend-expect";
 
 import { Temporal } from "@js-temporal/polyfill";
 
 expect.extend({
   toMatchDuration: (
     received: Temporal.Duration,
-    duration: Temporal.Duration
+    duration: Temporal.Duration,
   ) => {
     const relativeTo = Temporal.PlainDateTime.from("2020-01-01T00:00");
     const comparisonResult = Temporal.Duration.compare(received, duration, {

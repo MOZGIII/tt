@@ -8,7 +8,7 @@ describe("timerStateCompute", () => {
   const expectTimerState = (
     trackingSince: TrackingSince,
     timeNow: Temporal.ZonedDateTime,
-    expected: TimerState
+    expected: TimerState,
   ) => {
     const actual = timerStateCompute(trackingSince, timeNow);
     expect(actual.elapsedTime).toMatchDuration(expected.elapsedTime);
@@ -20,7 +20,7 @@ describe("timerStateCompute", () => {
       Temporal.ZonedDateTime.from("2000-01-01T00:00:00Z[UTC]"),
       {
         elapsedTime: Temporal.Duration.from("P0D"),
-      }
+      },
     );
   });
 
@@ -30,7 +30,7 @@ describe("timerStateCompute", () => {
       Temporal.ZonedDateTime.from("2000-01-01T10:05:00Z[UTC]"),
       {
         elapsedTime: Temporal.Duration.from("PT5M"),
-      }
+      },
     );
   });
 
@@ -40,7 +40,7 @@ describe("timerStateCompute", () => {
       Temporal.ZonedDateTime.from("2000-01-01T10:00:00Z[UTC]"),
       {
         elapsedTime: Temporal.Duration.from("PT0M"),
-      }
+      },
     );
   });
 
@@ -50,7 +50,7 @@ describe("timerStateCompute", () => {
       Temporal.ZonedDateTime.from("2000-01-01T10:00:00Z[UTC]"),
       {
         elapsedTime: Temporal.Duration.from("PT0M"),
-      }
+      },
     );
   });
 });

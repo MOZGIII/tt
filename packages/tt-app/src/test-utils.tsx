@@ -22,7 +22,7 @@ const AllTheProviders: React.FC<PropsWithChildren> = ({ children }) => {
 
 const customRender = (
   ui: ReactElement,
-  options?: Omit<RenderOptions, "queries">
+  options?: Omit<RenderOptions, "queries">,
 ): RenderResult => render(ui, { wrapper: AllTheProviders, ...options });
 
 export * from "@testing-library/react"; // eslint-disable-line import/export

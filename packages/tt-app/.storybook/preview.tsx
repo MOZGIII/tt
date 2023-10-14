@@ -2,13 +2,20 @@ import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import NoSsr from "@material-ui/core/NoSsr";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { StoryContext } from "@storybook/addons";
+import type { Decorator, Parameters, StoryContext } from "@storybook/react";
 import { themes as storybookThemes } from "@storybook/theming";
 
 import { themeIds, getTheme } from "../src/theme";
 
-export const parameters = {
+export const parameters: Parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  controls: {
+    expanded: true,
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
   docs: {
     theme: storybookThemes.dark,
   },
@@ -47,4 +54,4 @@ const withBase = (Story: React.ElementType, context: StoryContext) => {
   );
 };
 
-export const decorators = [withBase];
+export const decorators: Decorator[] = [withBase];

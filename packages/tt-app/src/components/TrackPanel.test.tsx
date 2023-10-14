@@ -16,7 +16,7 @@ test("starts the tracker if button is pressed while not tracking", async () => {
       onTrackingStop={other}
       onTaskNameChange={other}
       onTrackingCancel={other}
-    />
+    />,
   );
 
   await waitFor(() => screen.getByRole("trackButton"));
@@ -38,7 +38,7 @@ test("stops the tracker if button is pressed while tracking", async () => {
       onTrackingStop={onTrackingStop}
       onTaskNameChange={other}
       onTrackingCancel={other}
-    />
+    />,
   );
 
   await waitFor(() => screen.getByRole("trackButton"));

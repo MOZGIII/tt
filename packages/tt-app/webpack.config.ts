@@ -24,7 +24,7 @@ const config = (env: Env): webpack.Configuration => {
   const isProduction = env.production === true;
 
   const swcRc = JSON.parse(
-    fs.readFileSync(`${__dirname}/.swcrc`, "utf-8")
+    fs.readFileSync(`${__dirname}/.swcrc`, "utf-8"),
   ) as swc.Config;
   const swcOverrides = {
     jsc: { transform: { react: { refresh: !isProduction } } },

@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) =>
     resumeButton: {},
     dropdown: {},
     dropdownButton: {},
-  })
+  }),
 );
 
 const TrackRecordsListItem: React.FC<Props> = ({
@@ -84,14 +84,14 @@ const TrackRecordsListItem: React.FC<Props> = ({
   const handleTaskNameChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) =>
       onTaskNameChange(e.target.value),
-    [onTaskNameChange]
+    [onTaskNameChange],
   );
 
   const handleOpenMenu = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       setMenuAnchorEl(event.currentTarget);
     },
-    [setMenuAnchorEl]
+    [setMenuAnchorEl],
   );
   const handleClose = useCallback(() => {
     setMenuAnchorEl(null);
@@ -116,7 +116,7 @@ const TrackRecordsListItem: React.FC<Props> = ({
         <InputBase
           className={clsx(
             classes.timeIntervalInput,
-            classes.timeIntervalInputFrom
+            classes.timeIntervalInputFrom,
           )}
           value={formatTrackTime(record.from)}
         />
@@ -126,7 +126,7 @@ const TrackRecordsListItem: React.FC<Props> = ({
         <InputBase
           className={clsx(
             classes.timeIntervalInput,
-            classes.timeIntervalInputTo
+            classes.timeIntervalInputTo,
           )}
           value={formatTrackTime(record.to)}
         />

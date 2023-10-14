@@ -4,12 +4,15 @@
     "**/.pnp.*": true
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "prettier.prettierPath": "yarn workspace tt-scripts prettier",
+  "prettier.prettierPath": "node_modules/prettier",
   "prettier.ignorePath": ".prettierignore",
   "eslint.format.enable": true,
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
   "editor.codeActionsOnSave": {
     "source.fixAll": true
+  },
+  "package-json-upgrade.ignoreVersions": {
+    "@types/node": "> 16"
   }
 }

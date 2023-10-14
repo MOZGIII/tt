@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontVariantNumeric: "tabular-nums",
       padding: theme.spacing(1),
     },
-  })
+  }),
 );
 
 const TrackTimer: React.FC<Props> = ({ trackingSince }: Props) => {
@@ -28,7 +28,7 @@ const TrackTimer: React.FC<Props> = ({ trackingSince }: Props) => {
   const currentTime = useCurrentTime(250);
   const timerState = useMemo(
     () => timerStateCompute(trackingSince, currentTime),
-    [trackingSince, currentTime]
+    [trackingSince, currentTime],
   );
   const formattedTime = useMemo(() => {
     return formatTrackingTime(timerState.elapsedTime);

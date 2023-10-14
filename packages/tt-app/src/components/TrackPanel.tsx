@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
     entrySection: {
       flexGrow: 1,
     },
-  })
+  }),
 );
 
 const TrackPanel: React.FC<Props> = ({

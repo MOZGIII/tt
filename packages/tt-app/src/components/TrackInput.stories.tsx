@@ -1,4 +1,4 @@
-import type { Meta, Story } from "@storybook/react/types-6-0";
+import type { Meta, StoryFn } from "@storybook/react";
 import React, { ComponentProps } from "react";
 
 import TrackInput from "./TrackInput";
@@ -11,7 +11,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ComponentProps<typeof TrackInput>> = (args) => (
+const Template: StoryFn<ComponentProps<typeof TrackInput>> = (args) => (
   <TrackInput {...args} />
 );
 
