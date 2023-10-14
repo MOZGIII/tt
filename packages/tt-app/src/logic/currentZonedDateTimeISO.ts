@@ -11,7 +11,7 @@ export default currentZonedDateTimeISO;
 // Set the value to return instead of the real time.
 // Useful in the tests to allow mocking.
 export const setOverride = (
-  newOverride: Temporal.ZonedDateTime | null
+  newOverride: Temporal.ZonedDateTime | null,
 ): void => {
   override = newOverride;
 };

@@ -6,7 +6,7 @@ export type Deserialize<State, RawState> = (rawState: RawState) => State;
 export function createSerdeStorage<State, RawState>(
   serialize: Serialize<State, RawState>,
   deserialize: Deserialize<State, RawState>,
-  getStorage: () => PersistStorage<RawState>
+  getStorage: () => PersistStorage<RawState>,
 ): PersistStorage<State> {
   const storage = getStorage();
   return {
@@ -30,7 +30,7 @@ export type StorageValue<S> = {
 };
 
 export function createJSONStorage<S>(
-  getStorage: () => StateStorage
+  getStorage: () => StateStorage,
 ): PersistStorage<S> {
   const storage = getStorage();
   const persistStorage: PersistStorage<S> = {

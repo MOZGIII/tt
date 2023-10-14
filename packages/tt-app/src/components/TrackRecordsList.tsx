@@ -12,7 +12,7 @@ type Props = {
   readonly onDelete: (recordId: TrackingRecordId) => void;
   readonly onTaskNameChange: (
     recordId: TrackingRecordId,
-    taskName: string
+    taskName: string,
   ) => void;
 };
 
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: "row",
       padding: theme.spacing(1),
     },
-  })
+  }),
 );
 
 const TrackRecordsList: React.FC<Props> = ({
@@ -36,17 +36,17 @@ const TrackRecordsList: React.FC<Props> = ({
   const onResumes = useMapOverArray(
     records,
     (record) => () => onResume(record.id),
-    [onResume]
+    [onResume],
   );
   const onDeletes = useMapOverArray(
     records,
     (record) => () => onDelete(record.id),
-    [onDelete]
+    [onDelete],
   );
   const onTaskNameChanges = useMapOverArray(
     records,
     (record) => (taskName: string) => onTaskNameChange(record.id, taskName),
-    [onTaskNameChange]
+    [onTaskNameChange],
   );
   return (
     <Box className={classes.root}>

@@ -13,7 +13,7 @@ export type TrackingRecord = {
 export const makeTrackingRecordId = (): TrackingRecordId => uuidv4();
 
 export const makeTrackingRecord = (
-  params: Omit<TrackingRecord, "id">
+  params: Omit<TrackingRecord, "id">,
 ): TrackingRecord => ({
   ...params,
   id: makeTrackingRecordId(),

@@ -22,5 +22,5 @@ const persistOptions: PersistOptions<ThemeState> = {
 };
 
 export const useThemeStore = create<ThemeState>()(
-  persist(() => defaultValue, persistOptions)
+  persist(() => defaultValue, persistOptions),
 );

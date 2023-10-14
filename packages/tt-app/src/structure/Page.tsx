@@ -16,7 +16,7 @@ const Page: React.FC = () => {
 
   const recordsList = useMemo(
     () => Object.values(records).reverse(),
-    [records]
+    [records],
   );
 
   return (

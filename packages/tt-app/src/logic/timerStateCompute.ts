@@ -8,7 +8,7 @@ export type TimerState = {
 
 const timerStateCompute = (
   trackingSince: TrackingSince,
-  timeNow: Temporal.ZonedDateTime
+  timeNow: Temporal.ZonedDateTime,
 ): TimerState => {
   if (trackingSince === null) {
     return { elapsedTime: new Temporal.Duration() };

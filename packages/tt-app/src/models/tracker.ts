@@ -28,7 +28,7 @@ export const trackerActions = {
         trackingSince,
         taskName,
       }),
-      true
+      true,
     ),
 
   stop: () =>
@@ -38,7 +38,7 @@ export const trackerActions = {
         trackingSince: null,
         taskName: "",
       }),
-      true
+      true,
     ),
 
   setTaskName: (taskName: string) =>
@@ -56,7 +56,7 @@ export const trackerActions = {
         taskName,
         from,
         to,
-      })
+      }),
     );
   },
 };
@@ -90,5 +90,5 @@ const persistOptions: PersistOptions<TrackerState, SerializedTrackerState> = {
 };
 
 export const useTrackerStore = create<TrackerState>()(
-  persist(() => defaultValue, persistOptions)
+  persist(() => defaultValue, persistOptions),
 );
