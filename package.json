@@ -14,5 +14,6 @@
   "devDependencies": {
     "@types/lodash.merge": "^4.6.7",
     "lodash.merge": "^4.6.2"
-  }
+  },
+  "packageManager": "yarn@3.6.4"
 }
