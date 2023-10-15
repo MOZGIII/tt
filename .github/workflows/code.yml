@@ -34,7 +34,7 @@ jobs:
           - name: yarn constraints
             command: yarn constraints
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version-file: ".node-version"
@@ -59,7 +59,7 @@ jobs:
           - name: yarn prettier:check
             command: yarn prettier:check
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version-file: ".node-version"
@@ -87,7 +87,7 @@ jobs:
             path: packages/tt-app/storybook-static
             artifact: app-storybook.tar
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version-file: ".node-version"
